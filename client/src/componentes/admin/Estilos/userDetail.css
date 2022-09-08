@@ -1,0 +1,55 @@
+.profile-section {
+    background-color: #1f2937;
+    margin: 20px;
+    color: white;
+    padding: 3%;
+    border-radius: 20px;
+}
+
+.prof-detail, 
+.prof-services,
+.prof-req-rec,
+.prof-req-done {
+    border: salmon solid 2px;
+    padding: 2%;
+    border-radius: 40px;
+    margin-bottom: 5%;
+}
+
+.personal-data-profile {
+    display: flex;
+    border: salmon solid 2px;
+    max-width: 600px;
+    margin: 1%;
+    background-color: rgba(144, 137, 137, 0.303);
+    padding: 1%;
+    border-radius: 60px;
+}
+
+.personal-data-profile img {
+    border-radius: 20px;
+}
+
+.pd-list ul,
+.service-list ul,
+.req-detail ul {
+    list-style-type: none;
+    width: 250px;
+}
+
+.services-cont, 
+.req-cont {
+    margin-top: 4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.service-list, 
+.req-detail {
+    text-align: center;
+    background-color: rgba(144, 137, 137, 0.303);
+    
+    border-radius: 40px;
+    width: 330px;
+    margin-bottom: 8%;
+}

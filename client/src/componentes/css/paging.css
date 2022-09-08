@@ -1,0 +1,30 @@
+.pagination {
+  background-color: rgb(13, 66, 135);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.pagenr {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 10px 25px 10px 0px;
+  height: 20px;
+  width: 20px;
+  color: rgba(26, 155, 241, 0.629);
+  background-color: rgba(9, 64, 147, 0.183);
+  padding: 2px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 8x;
+  border: solid 1px rgba(26, 155, 241, 0.948);;;
+  transition-duration: 0.4s;
+  border-radius: 20px;
+}
+.pagenr:hover {
+  background-color: #282ee4;
+  color: whitesmoke;
+}

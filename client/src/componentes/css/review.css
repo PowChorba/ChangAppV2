@@ -1,0 +1,40 @@
+.reviews{
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
+}
+.input-review{
+    display: none;
+   
+}
+
+.solo{
+    display: block;
+    margin: 10px 0px;
+}
+
+.stars{
+    display: inline-block;
+}
+
+.star{
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+.textareaReview{
+    resize: none;
+}
+
+.textareaReview:focus{
+    outline: 0;
+}
+
+.btnReview{
+    margin: 10px 0px;
+    background: #1F2937;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+}

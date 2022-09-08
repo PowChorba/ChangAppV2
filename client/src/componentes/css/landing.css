@@ -1,0 +1,74 @@
+.landing-welcome {
+    background-image: url('../../assets/workers-landing.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.whoWeAre-welcome {
+    
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+        padding: 50px;
+        align-items: center;
+        background-color: rgba(180, 180, 179, 0.684);
+}
+
+
+.queEsChangapp, .primeraPregunta, .segundaPregunta {
+    max-width: 400px;
+    border-bottom:solid black 2px ;
+    padding-bottom: 50px;
+    
+}
+
+
+.standout-services-welcome {
+    height: 100%;
+}
+
+.get-started-welcome {
+    height: fit-content;
+    text-align: center;
+    background-color: rgba(33, 91, 153, 0.428);
+    color: white;
+    padding-bottom: 30px;
+}
+
+.lft-bttns_welcome {
+    height:'400px';
+    width:'350px';
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 130px;
+    border: solid blue 2px;
+    border-radius: 30px;
+}
+
+.bttns_welcome {
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: solid rgb(44, 44, 126) 2px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.567);
+    color: white;
+
+
+}
+
+
+.bttns_welcome:hover {
+  background-color: rgba(0, 0, 0, 0);
+    
+}

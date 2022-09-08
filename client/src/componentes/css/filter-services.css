@@ -1,0 +1,22 @@
+.filter-services-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  /* background-color: rgba(119, 119, 119, 0.2); */
+  background-color: red;
+  height: 100vh;
+  padding: 20px;
+}
+
+.filter-services {
+    border: 1px solid rgb(77, 77, 77);
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    transition: all 0.3s;
+    margin: auto;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
