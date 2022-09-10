@@ -17,6 +17,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserEmail, allNotifications, getAllReviews, allRequest, getAllServices } from "../../redux/actions";
 import CircularProgress from '@mui/material/CircularProgress';
 import CompleteProfile from "./AuxEditProfile/CompleteProfile";
+import s from './Settings.module.css'
+
 
 export default function Settings(id) {
   const dispatch = useDispatch();
@@ -55,48 +57,12 @@ export default function Settings(id) {
     return{
       
       color: isActive ? "#E5E7EB" : '#1F2937',
-      backgroundColor: isActive ? '#1F2937' : "#E5E7EB",
+      backgroundColor: isActive ? '#1976d2' : "#fff",
       textDecoration: isActive ? 'none' : 'none'
       
     }
   }
 
-  const styles={
-    container:{
-      display:'flex', 
-      width:'100%', 
-      alignItems:'start', 
-      justifyContent:'center', 
-      gap:'20px',
-      backgroundColor: "#E5E7EB",
-
-    },
-    links:{
-      
-      textDecoration:'none',
-      color:"#1F2937",
-    },
-    icons:{
-      fontSize:'2.5rem',
-      padding:'0 0 0 4%',
-      color:"#1F2937"
-    },
-    icons2:{
-      fontSize:'2.5rem',
-      padding:'0 0 0 4%',
-      color:"#fff"
-    },
-    listText:{
-      fontWeight:'bold',
-      fontSize:'1.2rem',
-      padding:'3.5%',
-      width:'80%'
-    },
-    selected:{
-      color:'red'
-    },
-    
-  }
   if(userDb.length === 0 && user?.emailVerified === true){
     return (
       <div>
@@ -121,98 +87,96 @@ export default function Settings(id) {
     <Box>
 
       <Navbar />
-        <Box style={styles.container} variant='section'>
-            <Box sx={{display:'flex',width:'30%', flexDirection:'column', borderRight:'solid grey 1px', padding:'10px 0 20px 0', fontSize:'1.2rem'}}>
+        <Box className={s.container} variant='section'>
+            <Box className={s.contenedorNavLinks}>
               
-              <NavLink style={styles.links} to='/home'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <HomeIcon style={styles.icons}/>
-                  <Typography style={styles.listText}>Ir al inicio</Typography>
+              <NavLink className={s.links} to='/home'>
+                <Box className={s.boxAdentro}>
+                  <HomeIcon className={s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Ir al inicio</Typography>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} id='profile'  to="profile">
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <AccountBoxIcon id="profileIcon" style={location?.pathname === '/settings/profile' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Perfil</Typography>
+                <Box className={s.boxAdentro}>
+                  <AccountBoxIcon id="profileIcon" className={location?.pathname === '/settings/profile' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Perfil</Typography>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)}  to="edit">
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <EditIcon id="editIcon" style={location?.pathname === '/settings/edit' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Editar Perfil</Typography>
+                <Box className={s.boxAdentro}>
+                  <EditIcon id="editIcon" className={location?.pathname === '/settings/edit' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Editar Perfil</Typography>
                 </Box>
               </NavLink>
               
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} to='notifications'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <NotificationsIcon id="notificationsIcon" style={location?.pathname === '/settings/notifications' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Notificaciones</Typography>
-                  <label style={{width:'20%', textAlign:'right', padding:'0 4%', fontWeight:'bold', cursor:'pointer'}} htmlFor="">{totalNotifications >= 99 ? `+${99}` : totalNotifications}</label>
+                <Box className={s.boxAdentro}>
+                  <NotificationsIcon id="notificationsIcon" className={location?.pathname === '/settings/notifications' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Notificaciones</Typography>
+                  <label className={s.lengthCosas} htmlFor="">{totalNotifications >= 99 ? `+${99}` : totalNotifications}</label>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} to='services'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <WorkIcon id="servicesIcon" style={location?.pathname === '/settings/services' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Servicios publicados</Typography>
-                  <label style={{width:'20%', textAlign:'right', padding:'0 4%', fontWeight:'bold'}} htmlFor="">{totalServices}</label>
+                <Box className={s.boxAdentro}>
+                  <WorkIcon id="servicesIcon" className={location?.pathname === '/settings/services' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Servicios publicados</Typography>
+                  <label className={s.lengthCosas} htmlFor="">{totalServices}</label>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} to='reviews'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <RateReviewIcon id="servicesIcon" style={location?.pathname === '/settings/reviews' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Reseñas</Typography>
-                  <label style={{width:'20%', textAlign:'right', padding:'0 4%', fontWeight:'bold'}} htmlFor="">{totalReviews}</label>
+                <Box className={s.boxAdentro}>
+                  <RateReviewIcon id="servicesIcon" className={location?.pathname === '/settings/reviews' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Reseñas</Typography>
+                  <label className={s.lengthCosas} htmlFor="">{totalReviews}</label>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} to='request'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <EmailIcon id="requestIcon" style={location?.pathname === '/settings/request' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Solicitudes recibidas</Typography>
-                  <label style={{width:'20%', textAlign:'right', padding:'0 4%', fontWeight:'bold'}} htmlFor="">{totalRequestsReceived}</label>
+                <Box className={s.boxAdentro}>
+                  <EmailIcon id="requestIcon" className={location?.pathname === '/settings/request' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Solicitudes recibidas</Typography>
+                  <label className={s.lengthCosas} htmlFor="">{totalRequestsReceived}</label>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
               <NavLink style={(e)=>handleSelected(e)} to='requester'>
-                <Box sx={{display:'flex', alignItems:'center'}}>
-                  <SendIcon id="requesterIcon" style={location?.pathname === '/settings/requester' ? styles.icons2 : styles.icons}/>
-                  <Typography style={styles.listText}>Solicitudes enviadas</Typography>
-                  <label style={{width:'20%', textAlign:'right', padding:'0 4%', fontWeight:'bold'}} htmlFor="">{totalRequestsMade}</label>
+                <Box className={s.boxAdentro}>
+                  <SendIcon id="requesterIcon" className={location?.pathname === '/settings/requester' ? s.icons2 : s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Solicitudes enviadas</Typography>
+                  <label className={s.lengthCosas} htmlFor="">{totalRequestsMade}</label>
                 </Box>
               </NavLink>
 
               <Divider variant="inset" />
 
-              {/* <NavLink style={styles.links} to='/login' > */}
-                <Box sx={{display:'flex', alignItems:'center'}} onClick={handleClick}>
-                  <LogoutIcon style={styles.icons}/>
-                  <Typography style={styles.listText}>Cerrar Sesion</Typography>
+                <Box className={s.boxAdentro} onClick={handleClick}>
+                  <LogoutIcon className={s.icons} fontSize='large'/>
+                  <Typography className={s.listText}>Cerrar Sesion</Typography>
                 </Box>
-              {/* </NavLink> */}
             </Box>
             
 
             <Outlet />
         </Box>
-      <Footer/>
+      {/* <Footer/> */}
     </Box>
 );
 }

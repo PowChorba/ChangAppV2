@@ -1,25 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth } from "../../context/authContext";
-
-import { deleteService, getUserEmail } from "../../redux/actions";
+import s from './ServicePublic.module.css'
+import { deleteService} from "../../redux/actions";
 import { NavLink } from "react-router-dom";
 import { Box } from "@mui/system";
-import { Avatar, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
-import "../css/empty.css";
 import { useState } from "react";
 import error from "../../404.png";
 
 export default function PublicServices() {
-  const { user } = useAuth();
   const userState = useSelector((state) => state.filter);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getUserEmail(user?.email));
-  // }, [dispatch, user?.email]);
-
   //Paginado para los servicios
   const paginas = Math.ceil(userState[0]?.services.length / 2)
   const [pages, setPages] = useState(1)
@@ -55,47 +47,19 @@ export default function PublicServices() {
     }, 1000);
   };
 
-  const styles = {
-    infoText: {
-      fontSize: "1.2rem",
-      padding: "1%",
-    },
-    btnPaginado: {
-      cursor: "pointer",
-      backgroundColor: "#1F2937",
-      border: "none",
-      padding: "5px 20px",
-      borderRadius: "20px",
-      color: "#fff",
-      outline: "0",
-    },
-    paginadoDiv: {
-      // marginTop: '5px',
-      textAlign: "center",
-      marginBottom: "5px",
-    },
-  };
-
   return (
-    <Box sx={{
-      width: "70%",
-      height:'88vh',
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      flexDirection:'column'
-    }}>
+    <Box className={s.boxContainer}>
       <Toaster position="top-center" reverseOrder={false} />
       {userState[0]?.services?.length === 0 ? (
-        <Box className="empty-container">
-          <Typography variant="h5" sx={{ textAlign: "center" }}>
+        <Box className={s.emptyContainer}>
+          <Typography variant="h5" className={s.typography}>
             ¡No tenes ningun servicio registrado!
           </Typography>
-          <Box className="low-section">
+          <Box className={s.lowSection}>
             {<img src={error} alt="?" width="182px" height="182px" />}
             <Typography variant="p">
               Si quieres publicar servicios, dirigete a la seccion{" "}
-              <NavLink className="linkk" to="/home/createService">
+              <NavLink className={s.linkk} to="/home/createService">
                 crear servicios
               </NavLink>{" "}
             </Typography>
@@ -105,108 +69,76 @@ export default function PublicServices() {
         typeof serviceSlice === "object" &&
         serviceSlice?.map((e) => {
           return (
-            <Box sx={{display:'flex', width:'90%', alignItems:'center', justifyContent:'center', height:'100%'}}>
+            <Box className={s.containerServices}>
             <Box
             key={e.id}
-              sx={{
-                width:'100%',
-                display: "flex",
-                border: "solid grey 1px",
-                flexDirection: "column",
-                borderRadius: "10px",
-                padding: "2%",
-              }}
+              className={s.boxAdentroServices}
             >
-              <Box sx={{ display: "flex" }}>
+              <Box className={s.boxUno}>
                 <Box
-                  sx={{
-                    width: "60%",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    flexDirection: "column",
-                  }}
+                  className={s.boxDos}
                 >
                   <Typography
-                    style={styles.infoText}
+                    className={s.infoText}
                     variant="h7"
                   >{`Nombre: ${e.name}`}</Typography>
-                  <Box sx={{ display: "flex" }}>
-                    <Typography style={styles.infoText} variant="h7">
+                  <Box className={s.boxUno}>
+                    <Typography className={s.infoText} variant="h7">
                       Precio:
                     </Typography>
                     <Typography
-                      sx={{
-                        color: "green",
-                        marginLeft: "10px",
-                        fontSize: "1.2rem",
-                        padding: "1% 1% 1% 0",
-                      }}
+                      className={s.typographyUno}
                       variant="h7"
                     >
                       {` $${e.price}`}
                     </Typography>
                   </Box>
                   <Typography
-                    style={styles.infoText}
+                    className={s.infoText}
                     variant="h7"
                   >{`Categoría: ${e.category?.name}`}</Typography>
                   <Typography
-                    style={styles.infoText}
+                    className={s.infoText}
                     variant="h7"
                   >{`Solicitudes: ${e.request?.length}`}</Typography>
                   <Typography
-                    style={styles.infoText}
+                    className={s.infoText}
                     variant="h7"
                   >{`Días: ${e.day.split(",").join(", ")}`}</Typography>
                   <Typography
-                    style={styles.infoText}
+                    className={s.infoText}
                     variant="h7"
                   >{`Horarios: ${e.hours.split(",").join(", ")}`}</Typography>
                 </Box>
                 <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "40%",
-                  }}
+                  className={s.boxTres}
                 >
                   <Box
-                    sx={{
-                      height: "70%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
+                    className={s.boxCuatro}
                   >
                     <Typography
-                      style={styles.infoText}
-                      sx={{ textAlign: "center" }}
+                      className={s.infoText}
                       variant="h7"
                     >
                       Descripción:
                     </Typography>
                     <Typography
-                      style={styles.infoText}
-                      sx={{ textAlign: "center" }}
+                      className={s.infoText}
                       variant="h7"
                     >
                       {e.description}
                     </Typography>
                   </Box>
                   <Box
-                    sx={{
-                      height: "30%",
-                      display: "flex",
-                      justifyContent: "space-around",
-                      alignItems: "center",
-                    }}
+                    className={s.boxCinco}
                   >
                     <NavLink
-                      style={{ textDecoration: "none", color: "blue" }}
+                      className={s.buttonNavLink}
                       to={`${e.id}`}
                     >
                       <Button
                         variant="contained"
-                        sx={{ backgroundColor: "#1F2937" }}
+                        sx={{margin: '5px'}}
                       >
                         Modificar Servicio
                       </Button>
@@ -214,9 +146,9 @@ export default function PublicServices() {
 
                     <Button
                       variant="contained"
-                      sx={{ backgroundColor: "#1F2937" }}
                       id={e.id}
                       onClick={handleDelete}
+                      sx={{margin: '5px'}}
                     >
                       Borrar Servicio
                     </Button>
@@ -228,10 +160,10 @@ export default function PublicServices() {
           );
         })
         )}
-        <Box style={styles.paginadoDiv}>
-          <button style={styles.btnPaginado} onClick={handleAnterior}>{'<'}</button>
+        <Box className={s.paginadoDiv}>
+          <button className={s.btnPaginado} onClick={handleAnterior}>{'<'}</button>
           {pages} of {paginas}
-          <button style={styles.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
+          <button className={s.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
         </Box>
     </Box>
   );

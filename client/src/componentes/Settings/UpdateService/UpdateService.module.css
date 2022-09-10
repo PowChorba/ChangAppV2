@@ -1,0 +1,101 @@
+.container {
+    width: 70%;
+    margin: 10px 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.titulo {
+    margin: 15px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boxUno {
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.boxDias {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.boxDos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tituloUno {
+    text-align: center;
+    padding: 30px;
+}
+
+.boxTres {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: center;
+}
+
+.boxHorarios {
+    display: flex;
+}
+
+.buttonHorario {
+    width: 40px;
+    height: 45px;
+    outline: none;
+}
+
+.boxAgregarHorarios{
+    display: flex;
+    width: 90%;
+}
+
+.textArea {
+    resize: none;
+    border-radius: 10px;
+}
+
+.cargarDatos{
+    margin: 5px auto;
+}
+
+/* ESTABAN EN LA HOJA STYLES.JS */
+
+.time {
+    width: 80px;
+    font-size: 1.5em;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 7px;
+    outline: none;
+}
+
+.hourAdded {
+    height: 50px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+
+@media only screen and (max-width: 414px){ 
+    
+}

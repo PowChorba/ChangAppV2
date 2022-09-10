@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../context/authContext";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getUserEmail,
-  postNotification,
-  updateUser,
-} from "../../../redux/actions";
+import { postNotification, updateUser} from "../../../redux/actions";
 import axios from "axios";
 import { CLODUNIARY_API } from "../../../Secret/Secret";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +9,8 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import camera from "../../../pngwing.com.png";
 import toast, {Toaster} from 'react-hot-toast'
 import EditIcon from '@mui/icons-material/Edit';
+import s from './UpdateProfile.module.css'
+
 
 function validate(input) {
   let error = {};
@@ -48,10 +46,6 @@ export default function UpdateProfile() {
     userNotificated_id: estado[0]?.id,
   });
   //PARA TRAER LA DATA DESDE LA BASE DE DATOS
-
-  // useEffect(() => {
-  //   dispatch(getUserEmail(user?.email));
-  // }, [dispatch, user?.email]);
 
   // PARA MANEJAR LOS NUEVOS DATOS INGRESADOS
   const handleChange = (e) => {
@@ -117,127 +111,15 @@ export default function UpdateProfile() {
     }
   }, [input]);
 
-  const styles = {
-    container: {
-      margin: "4%",
-      height: "60vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "4%",
-      border: "solid grey 1px",
-      borderRadius: "10px",
-    },
-    form: {
-      width: "80%",
-      display: "flex",
-      flexDirection: "column",
-    },
-    topSection: {
-      width: "100%",
-      display: "flex",
-      justifyContent: "space-between",
-    },
-    bottomSection: {
-      padding: "5%",
-      width: "100%",
-      display: "flex",
-      alignItems: "center",
-    },
-    inputsSection: {
-      width: "55%",
-    },
-    imgInput: {
-      width: "100%",
-      display: "none",
-    },
-
-    formLabel: {
-      fontSize: "1.3rem",
-    },
-    editImg: {
-      position: "relative",
-      left: "0",
-      top: "0",
-    },
-    editIcon: {
-      position: "absolute",
-      zIndex: "1",
-      bottom: "15px",
-      left: "15px",
-      borderRadius: "50%",
-      backgroundColor: "#E5E7EB",
-      padding: "4%",
-      cursor: "pointer",
-      fontSize: '16px'
-    },
-  };
-
   return (
-    <Box style={styles.container}>
+    <Box className={s.container}>
       <Toaster position="top-center" reverseOrder={false} />
-      <form style={styles.form} onSubmit={(e) => handleSubmit(e)}>
-        <Box style={styles.topSection}>
-          <Box style={styles.inputsSection}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography style={styles.formLabel}>Nombre:</Typography>
-              <TextField
-                type="text"
-                value={input.firstName} 
-                placeholder={estado[0].firstName}
-                name="firstName"
-                onChange={handleChange}
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography style={styles.formLabel}>Apellido:</Typography>
-              <TextField
-                type="text"
-                placeholder={estado[0].lastName}
-                value={input.lastName}
-                name="lastName"
-                onChange={handleChange}
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography style={styles.formLabel}>Localidad:</Typography>
-              <TextField
-                type="textArea"
-                placeholder={estado[0].location}
-                value={input.location}
-                name="location"
-                onChange={handleChange}
-              />
-            </Box>
-          </Box>
-          <Box style={styles.imgSection}>
-            <label style={styles.editImg} htmlFor="inputTag">
+      <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
+          <Box>
+          <Box className={s.relative}>
+            <label className={s.editImg} htmlFor="inputTag">
               <img
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  cursor: "pointer",
-                  zIndex: "-1",
-                  borderRadius: '10px'
-                }}
+                className={s.imgStyle}
                 src={
                   input.img
                     ? input.img
@@ -247,10 +129,10 @@ export default function UpdateProfile() {
                 }
                 alt=""
               />
-              <EditIcon style={styles.editIcon} />
+              <EditIcon className={s.editIcon} />
               <input
                 id="inputTag"
-                style={styles.imgInput}
+                className={s.imgInput}
                 type="file"
                 accept="image/jpeg"
                 name="img"
@@ -258,11 +140,49 @@ export default function UpdateProfile() {
               />
             </label>
           </Box>
-        </Box>
-        <Box style={styles.bottomSection}>
-          <Typography style={styles.formLabel}>Descripción:</Typography>
-          <TextField
-            sx={{ width: "100%" }}
+            <Box
+              className={s.boxDos}
+            >
+              <Typography className={s.formLabel}>Nombre:</Typography>
+              <TextField
+                type="text"
+                value={input.firstName} 
+                placeholder={estado[0].firstName}
+                name="firstName"
+                onChange={handleChange}
+              />
+            </Box>
+            <Box
+              className={s.boxDos}
+            >
+              <Typography className={s.formLabel}>Apellido:</Typography>
+              <TextField
+                type="text"
+                placeholder={estado[0].lastName}
+                value={input.lastName}
+                name="lastName"
+                onChange={handleChange}
+              />
+            </Box>
+            <Box
+              className={s.boxDos}
+            >
+              <Typography className={s.formLabel}>Localidad:</Typography>
+              <TextField
+                type="textArea"
+                placeholder={estado[0].location}
+                value={input.location}
+                name="location"
+                onChange={handleChange}
+              />
+            </Box>
+          </Box>
+        <Box className={s.bottomSection}>
+          <Typography className={s.formLabel}>Descripción:</Typography>
+          <textarea
+            className={s.textArea}
+            // rows='5'
+            // cols='60'
             type="text"
             placeholder={estado[0].description}
             value={input.description}

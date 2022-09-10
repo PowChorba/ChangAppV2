@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAuth } from "../context/authContext";
 import { getAllCategories } from "../redux/actions";
 import { Link, NavLink } from "react-router-dom";
-import "./css/footer.css";
 import emailjs from "emailjs-com";
+import s from './Footer.module.css'
+
 
 export default function Footer() {
-  const { user } = useAuth();
   let category = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   category = category.slice(0, 4);
@@ -39,55 +38,52 @@ export default function Footer() {
   };
 
   return (
-    <div className="footer">
-      <div className="footer__nombre">
-        <h1>ChangaApp</h1>
-      </div>
-      <div className="seccion__footer--lista">
+    <div className={s.footer}>
+      <div className={s.seccionFooterLista}>
         <ul>
           <p>Categorias</p>
           {category &&
             category.map((c) => {
               return (
-                <Link key={c.id} to="/home/todos" className="footerLink">
+                <Link key={c.id} to="/home/todos">
                   <div>
-                    <li className="footer__lista--item">
+                    <li className={s.footerListaItem}>
                       <p>{c.name}</p>
                     </li>
                   </div>
                 </Link>
               );
             })}
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <p>Otras</p>
           </li>
         </ul>
       </div>
-      <div className="seccion__footer--lista">
-        <ul className="footer__lista">
+      <div className={s.seccionFooterLista}>
+        <ul className={s.footerLista}>
           <p>Legal</p>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <p>Quienes Somos</p>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <p>Politica de Privacidad</p>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <p>Programa de Fidelidad</p>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <NavLink style={{ color: "white" }} to="/home/createService">
               <p>Anuncie Aqui</p>
             </NavLink>
           </li>
         </ul>
       </div>
-      <div className="seccion__footer--lista">
-        <ul className="footer__lista">
+      <div className={s.seccionFooterLista}>
+        <ul className={s.footerLista}>
           <p>Desarrollado por</p>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <a
-              className="footer__linkedIn"
+              className={s.footerLinkedIn}
               href="https://www.linkedin.com/in/enrique-gomez-naar-fullstackdeveloper/"
               target="_blank"
               rel="noopener noreferrer"
@@ -95,9 +91,9 @@ export default function Footer() {
               Enrique Gomez Naar
             </a>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <a
-              className="footer__linkedIn"
+              className={s.footerLinkedIn}
               href="https://www.linkedin.com/in/lucas-axel-hess/"
               target="_blank"
               rel="noopener noreferrer"
@@ -105,9 +101,9 @@ export default function Footer() {
               Lucas Hess
             </a>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <a
-              className="footer__linkedIn"
+              className={s.footerLinkedIn}
               href="https://www.linkedin.com/in/juan-pablo-cuadrelli-full-stack-dev/"
               target="_blank"
               rel="noopener noreferrer"
@@ -115,9 +111,9 @@ export default function Footer() {
               Juan Pablo Cuadrelli
             </a>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <a
-              className="footer__linkedIn"
+              className={s.footerLinkedIn}
               href="https://www.linkedin.com/in/agop-chorbadjian-369767218/"
               target="_blank"
               rel="noopener noreferrer"
@@ -125,9 +121,9 @@ export default function Footer() {
               Agop Chorbadjian
             </a>
           </li>
-          <li className="footer__lista--item">
+          <li className={s.footerListaItem}>
             <a
-              className="footer__linkedIn"
+              className={s.footerLinkedIn}
               href="https://www.linkedin.com/in/claudio-amaya-fullstack/"
               target="_blank"
               rel="noopener noreferrer"
@@ -138,27 +134,27 @@ export default function Footer() {
         </ul>
       </div>
 
-      <form ref={form} onSubmit={sendMail} className="formulario">
-        <h3 className="formulario__titulo">Contactanos</h3>
-        <div className="formulario__campo">
+      <form ref={form} onSubmit={sendMail} className={s.formulario}>
+        <h3 className={s.formularioTitulo}>Contactanos</h3>
+        <div className={s.formularioCampo}>
           <label>&nbsp;Nombre</label>
-          <input name="name" type="text" className="formulario__nombre" />
+          <input name="name" type="text" className={s.formularioInput} />
         </div>
-        <div className="formulario__campo">
-          <label>&nbsp;Email</label>
-          <input name="email" type="email" className="formulario__nombre" />
+        <div className={s.formularioCampo}>
+          <label className={s.formularioLabel}>&nbsp;Email</label>
+          <input name="email" type="email" className={s.formularioInput} />
         </div>
-        <div className="formulario__campo">
-          <label>&nbsp;Asunto</label>
-          <input name="subject" type="text" className="formulario__nombre" />
+        <div className={s.formularioCampo}>
+          <label className={s.formularioLabel}>&nbsp;Asunto</label>
+          <input name="subject" type="text" className={s.formularioInput} />
         </div>
-        <div className="formulario__campo">
-          <label>&nbsp;Escribe tu mensaje</label>
-          <textarea name="message" className="formulario__texto"></textarea>
+        <div className={s.formularioCampo}>
+          <label className={s.formularioLabel}>&nbsp;Escribe tu mensaje</label>
+          <textarea name="message" className={s.formularioTextarea}></textarea>
         </div>
         <input
           type="submit"
-          className="formulario__boton"
+          className={s.formularioBoton}
           value="Enviar Mensaje"
         />
       </form>

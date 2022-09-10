@@ -1,0 +1,88 @@
+.boxUno {
+    width: 70%;
+    align-items: center;
+}
+
+.boxDos {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.boxTres {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+
+.boxCuatro {
+    padding: 5px;
+}
+
+.texto {
+    font-size: 1.3rem;
+}
+
+.boxBoton {
+    border-radius: 10px;
+}
+
+/* EMPTY CONTAINER */
+.emptyContainer{
+    width: 70%;
+    padding: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+    background-color: rgba(182, 182, 182, 0.1);
+    box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
+}
+
+/* PAGINADO  */
+
+.btnPaginado {
+    cursor: pointer;
+    background-color: #1976d2;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #Fff;
+    margin: 5px;
+    outline: 0;
+}
+
+.paginadoDiv {
+    text-align: center;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 60%;
+    bottom: 0px;
+}
+
+
+@media only screen and (max-width: 414px){ 
+    .boxDos {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .boxTres {
+        width: 100%;
+        /* display: flex; */
+        justify-content: space-between;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        margin: 5px 0px;
+    }
+
+    .paginadoDiv {
+        text-align: center;
+        margin-bottom: 5px;
+        position: absolute;
+        left: 35%;
+        bottom: 50px;
+    }
+}

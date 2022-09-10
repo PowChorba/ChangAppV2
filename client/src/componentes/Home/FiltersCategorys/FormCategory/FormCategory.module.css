@@ -1,0 +1,53 @@
+.formFilters {
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+  padding: 30px;
+  padding-bottom: 15px;
+  background-color: rgba(182, 182, 182, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  box-shadow: 7px 6px 5px -6px rgba(0,0,0,1);
+}
+
+.filterDivBox {
+    padding: 5px;
+}
+
+.input {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.divBtn{
+  text-align: center;
+}
+
+.btn {
+  margin: 5px;
+  background-color: #1976d2;
+  border: none;
+  color: #fff;
+  padding: 10px 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn:hover{
+  background-color: #033d94;
+}
+
+.select {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 414px){ 
+  .formFilters {
+  margin: 15px;
+    padding: 5px;
+  }
+  
+}

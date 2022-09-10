@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import s from './Login.module.css'
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -97,15 +98,15 @@ export default function Login() {
   return (
     <div>
       <Nav />
-      <Box style={styles.container}>
-        <Box style={styles.login}>
-          <Typography variant="h4" sx={{ marginBottom: "30px" }}>
+      <Box className={s.container}>
+        <Box className={s.login}>
+          <Typography variant="h4" className={s.tituloUno}>
             Login
           </Typography>
-          <form style={styles.form} onSubmit={(e) => handleSumbit(e)}>
+          <form className={s.form} onSubmit={(e) => handleSumbit(e)}>
             {error && <p>{error}</p>}
             <Box
-              sx={{ width: "100%", display: "flex", flexDirection: "column" }}
+              // sx={{ width: "100%", display: "flex", flexDirection: "column" }}
             >
               <TextField
                 id="outlined-basic"

@@ -16,9 +16,9 @@ import { useAuth } from "../../context/authContext";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import userImg from "../../user.png";
 import Navbar from "../PrivateRoute/Navbar";
-import styles from "./style";
 import Footer from "../Footer";
 import toast, { Toaster } from "react-hot-toast";
+import s from './RequestService.module.css'
 
 export default function RequestService(props) {
   const { user } = useAuth(); // author
@@ -177,36 +177,32 @@ export default function RequestService(props) {
             <Link to="/register">Registrarse</Link>
           </p>
         ) : (
-          <Box style={styles.container}>
+          <Box className={s.container}>
             <Toaster position="top-center" reverseOrder={false} />
-            <Box sx={{ display: "flex", width: "100%", margin: "20px" }}>
-              <Box style={styles.containerRequest}>
-                <Box style={styles.containerService}>
+            <Box className={s.boxUno}>
+              <Box className={s.containerRequest}>
+                <Box className={s.containerService}>
                   <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
+                    className={s.boxDos}
                   >
                     <Typography variant="h4">{service.name}</Typography>
-                    <Box style={styles.box}>
+                    <Box className={s.box}>
                       <Typography variant="h4">Precio: </Typography>
                       <Typography
-                        sx={{ color: "green", marginLeft: "10px" }}
+                        className={s.titutloUno}
                         variant="h4"
                       >
                         {` $${service.price}`}
                       </Typography>
                     </Box>
                   </Box>
-                  <Box sx={{ width: "100%", padding: "20px" }}>
+                  <Box className={s.boxTres}>
                     <Typography variant="h5">{`Descripción: ${service.description}`}</Typography>
                   </Box>
                 </Box>
-                <Box style={styles.containerRequestForm}>
+                <Box className={s.containerRequestForm}>
                   <form onSubmit={(e) => handleSubmit(e)}>
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                    <Box className={s.boxCuatro}>
                       {weekDays.map((el) => {
                         if (service.day?.split(",").includes(el)) {
                           return (
@@ -232,10 +228,10 @@ export default function RequestService(props) {
                           );
                       })}
                     </Box>
-                    <Box style={styles.containerHours}>
+                    <Box className={s.containerHours}>
                       {service?.hours?.split(",").map((el) => {
                         return (
-                          <Box style={styles.hours}>
+                          <Box className={s.hours}>
                             <Typography>{el}</Typography>
                             <input
                               id={el}
@@ -248,11 +244,7 @@ export default function RequestService(props) {
                       })}
                     </Box>
                     <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-around",
-                        padding: "30px",
-                      }}
+                      className={s.boxCinco}
                     >
                       <Button
                         onClick={handlePrev}
@@ -274,9 +266,9 @@ export default function RequestService(props) {
                   </form>
                 </Box>
               </Box>
-              <Box style={styles.containerUser}>
-                <Box style={styles.userDetail}>
-                  <Box style={styles.userName}>
+              <Box className={s.containerUser}>
+                <Box className={s.userDetail}>
+                  <Box className={s.userName}>
                     <Typography variant="h4">
                       {service?.user?.firstName}
                     </Typography>
@@ -285,7 +277,7 @@ export default function RequestService(props) {
                     </Typography>
                   </Box>
                   <img
-                    style={styles.userPic}
+                    className={s.userPic}
                     src={service?.user?.img ? service?.user?.img : userImg}
                     alt="user-pic"
                   />

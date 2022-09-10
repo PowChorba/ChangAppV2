@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../../context/authContext";
 import {
-  allRequest,
-  getAllServices,
   postNotification,
   updateRequest,
 } from "../../../redux/actions";
@@ -12,7 +10,7 @@ import { Button, Box, Typography } from "@mui/material";
 import userImg from "../../../user.png";
 import toast, { Toaster } from "react-hot-toast";
 import error from '../../../404.png'
-
+import s from './StateRequest.module.css'
 
 export default function StateRequest() {
   const { user } = useAuth();
@@ -55,20 +53,12 @@ export default function StateRequest() {
     window.scrollTo(0,0)
 }
 
-
-
-
   //ESTADO PARA LA NOTIFICACION AUTOMATICA
   const [noti, setNoti] = useState({
     message: "",
     userNotification_id: "",
     userNotificated_id: "",
   });
-  //PARA TRAER LOS SERVICIOS
-  // useEffect(() => {
-  //   dispatch(getAllServices());
-  //   dispatch(allRequest())
-  // }, [dispatch]);
 
   //PARA CAMBIAR EL VALOR DEL ESTADO
   const handleOnClick = (e) => {
@@ -114,58 +104,14 @@ export default function StateRequest() {
     }
   };
 
-  const styles = {
-    acepted: {
-      display: "flex",
-      border: "solid #58CC22 2px",
-      margin: "2%",
-      padding: "2%",
-      borderRadius: "10px",
-    },
-    rejected: {
-      display: "flex",
-      border: "solid #E00A0A 2px",
-      margin: "2%",
-      padding: "2%",
-      borderRadius: "10px",
-    },
-    pending: {
-      display: "flex",
-      border: "solid grey 2px",
-      margin: "2%",
-      padding: "2%",
-      borderRadius: "10px",
-    },
-    btnPaginado: {
-      cursor: "pointer",
-      backgroundColor: "#1F2937",
-       border: "none",
-        padding: "5px 20px",
-        borderRadius: "20px",
-        color: '#fff',
-        outline: '0'
-    },
-    paginadoDiv: {
-      // marginTop: '5px',
-      textAlign: 'center',
-      marginBottom:"5px"
-    }
-  };
-
   return (
-    <Box sx={{ width: "70%" }}>
+    <Box className={s.contenedorGeneral}>
       <Toaster position="top-center" reverseOrder={false} />
       {filterEmail.length === 0 ? (
         <Box
-          className="empty-container"
-          sx={{
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+          className={s.emptyContainer}
         >
-          <Box className="low-section" pl={2}>
+          <Box className={s.lowSection} pl={2}>
               {
                 <img
                   src={error}
@@ -177,22 +123,16 @@ export default function StateRequest() {
             <Typography variant="h6" mb={5}>
               Para ver los estados del servicio, primero debes publicar uno,
               dirigete a la seccion{" "}
-              <NavLink className="linkk" to="/home/createService">
+              <NavLink className={s.linkk} to="/home/createService">
                 publicar servicio
               </NavLink>
             </Typography>
           </Box>
         </Box>
       ): requestSlice.length === 0 ? <Box
-      className="empty-container"
-      sx={{
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
+      className={s.emptyContainer}
     >
-      <Box className="low-section" pl={2}>
+      <Box className={s.lowSection} pl={2}>
           {
             <img
               src={error}
@@ -206,13 +146,12 @@ export default function StateRequest() {
         </Typography>
       </Box>
     </Box>: (
-        // filterEmail?.map((p) => {
           requestSlice.map((e) => {
             return e.state === "rechazado" || e.state === "Pagado" ? (
               <Box
               key={e.id}
-                style={
-                  e.state === "rechazado" ? styles.rejected : styles.acepted
+                className={
+                  e.state === "rechazado" ? s.rejected : s.acepted
                 }
               >
                 <Typography>
@@ -223,21 +162,16 @@ export default function StateRequest() {
             ) : (
               <Box
               key={e.id}
-                style={
+                className={
                   e.state === "rechazado"
-                    ? styles.rejected
+                    ? s.rejected
                     : e.state === "aceptado"
-                    ? styles.acepted
-                    : styles.pending
+                    ? s.acepted
+                    : s.pending
                 }
               >
                 <Box
-                  sx={{
-                    width: "25%",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
+                  className={s.boxUno}
                 >
                   <Typography sx={{ padding: "5%" }}>
                     Reservado por:{" "}
@@ -254,13 +188,7 @@ export default function StateRequest() {
                   </Typography>
                 </Box>
                 <Box
-                  sx={{
-                    width: "50%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-around",
-                    padding: "0 2%",
-                  }}
+                  className={s.boxDos}
                 >
                   <Typography>
                     Nombre del servicio: {e.services?.name}
@@ -273,13 +201,7 @@ export default function StateRequest() {
                 <Box sx={{ width: "25%" }}>
                   {e.state === "aceptado" ? (
                     <form
-                      style={{
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-around",
-                        padding: "0 2%",
-                      }}
+                      className={s.boxTres}
                       name={e.userRequester.email}
                       onSubmit={(e) => handleOnSubmit(e)}
                     >
@@ -300,13 +222,7 @@ export default function StateRequest() {
                     <form
                       name={e.userRequester.email}
                       onSubmit={(e) => handleOnSubmit(e)}
-                      style={{
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-around",
-                        padding: "0 2%",
-                      }}
+                      className={s.boxTres}
                     >
                       <Button
                         id="aceptado"
@@ -334,7 +250,7 @@ export default function StateRequest() {
                       </Button>
                     </form>
                   ) : (
-                    console.log("asd")
+                    console.log("No mas ternarios")
                   )}
                 </Box>
               </Box>
@@ -342,10 +258,10 @@ export default function StateRequest() {
           })
         // })
       )}
-      <div style={styles.paginadoDiv}>
-          <button style={styles.btnPaginado} onClick={handleAnterior}>{'<'}</button>
+      <div className={s.paginadoDiv}>
+          <button className={s.btnPaginado} onClick={handleAnterior}>{'<'}</button>
           {pages} of {paginas}
-          <button style={styles.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
+          <button className={s.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
         </div>
     </Box>
   );

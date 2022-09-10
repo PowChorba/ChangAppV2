@@ -1,0 +1,135 @@
+.infoText {
+    font-size: 1.2rem;
+    padding: 1%;
+}
+
+.btnPaginado {
+    cursor: pointer;
+    background-color: #1976d2;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #Fff;
+    outline: 0;
+}
+
+.paginadoDiv {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* CONTENEDOR */
+.boxContainer {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/* EMPTY CONTAINER */
+.emptyContainer{
+    width: 70%;
+    padding: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+    background-color: rgba(182, 182, 182, 0.1);
+    box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
+}
+
+.typography {
+    text-align: center;
+}
+
+.lowSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px ;
+}
+
+.linkk {
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+    border-bottom: 1px solid #000;
+}
+
+/* CONTENEDOR SERVICIOS */
+
+.containerServices {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    align-items: center;
+    justify-items: center;
+    height: 80%;
+    text-align: center;
+}
+
+.boxAdentroServices {
+    width: 100%;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.boxUno {
+    display: flex;
+    justify-content: center;
+}
+
+.boxDos {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.boxTres {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.boxCuatro{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.boxCinco {
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.typographyUno {
+    color: green;
+    margin-left: 10px;
+    font-size: 1.2rem;
+    padding: 1% 1% 1% 0;
+}
+
+.buttonNavLink {
+    text-decoration: none;
+    color: blue;
+}
+
+@media only screen and (max-width: 414px){ 
+    .boxUno {
+        display: block;
+    }
+    .boxCinco {
+        margin: 5px;
+        height: 30%;
+        display: block;
+        justify-content: space-around;
+        align-items: center;
+    }
+}

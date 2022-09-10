@@ -1,0 +1,68 @@
+/* CONTENEDORES CATEOGRIAS */
+.categoryContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 75%;
+    margin: 30px auto;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.cardCategory {
+    width: 300px;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
+}
+
+/* TITULO PARA CADA CATEGORIA */
+.divTitulo{
+    text-align: left;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.514);
+    position: absolute;
+    bottom: 0px;
+}
+
+.title{
+    font-size: 1.2rem;
+    color: #000;
+    padding: 10px 20px;
+}
+
+/* TITULO CATEGORIAS GENERAL */
+.divEnunciado{
+    text-align: center;
+}
+
+.enunciado {
+    margin: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 50%;      
+}
+
+/* RESPONSIVE PARA TELEFONOS  */
+@media only screen and (max-width: 414px){ 
+    .categoryContainer{
+        /* width: 90%; */
+        grid-template-columns: 1fr;
+        margin: 10px auto;
+
+    }
+
+    .cardCategory{
+        width: 300px;
+        height: 250px;
+        margin: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
+    }
+}

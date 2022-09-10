@@ -1,0 +1,51 @@
+.container {
+    text-align: center;
+    margin: 20px;
+}
+
+.containerForm {
+    width: 30%;
+    margin: 10px auto;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input {
+    width: 100%;
+    margin-top: 5px 0;
+}
+
+.imgInput {
+    width: 100%;
+    display: none;
+}
+
+/* EXTRAS PORQUE HACEN TODO EN LINEA  */
+.boxUno {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.error {
+    color: red;
+}
+
+@media only screen and (max-width: 414px){ 
+    .containerForm{
+        width: 80%;
+    }
+
+    .input {
+        margin: 10px;
+    }
+    
+}
+

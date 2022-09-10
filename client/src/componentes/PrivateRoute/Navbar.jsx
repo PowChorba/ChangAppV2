@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import "../css/navBar.css";
 import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -21,61 +20,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { allNotifications, getUserEmail } from "../../redux/actions";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import MenuIcon from '@mui/icons-material/Menu';
+import s from './Navbar.module.css'
 
-const styles = {
-  container: {
-    padding: "5px 0",
-    backgroundColor: "#1F2937",
-    color: "#fff",
-  },
-  button: {
-    color: "#fff",
-  },
-  asd: {
-    textDecoration: "none",
-    color: "#fff",
-  },
-  divPrueba: {
-    position: "relative",
-  },
-  prueba: {
-    display: "none",
-  },
-  prueba2: {
-    display: "block",
-    backgroundColor: "#1F2937",
-    textAlign: "center",
-    position: "absolute",
-    right: "-60px",
-    borderRadius: "5px",
-    width: "150px",
-    height: "150px",
-    fontSize: "14px",
-    zIndex: "10",
-  },
-  asdd: {
-    margin: "15px 5px",
-    backgroundColor: "#fff",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#000",
-  },
-  cero: {
-    backgroundColor: "#fff",
-    textAlign: "center",
-    color: "#000",
-    margin: "15px 5px",
-  },
-  noAdmin: {
-    display: "none",
-  },
-  admin: {
-    display: "block",
-    textDecoration: "none",
-    color: "#000",
-  },
-};
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -113,36 +60,56 @@ export default function Navbar() {
     setNoti(!noti);
   };
 
+  const [btn, setBtn] = useState(false)
+
+  const handleOnClic = (e) => {
+    e.preventDefault()
+    setBtn(!btn)
+  } 
+
   return (
-    <Box style={styles.container} className="navBar">
+    <Box >
+      <div className={s.container}>
+      <div className={s.menuIcon}>
+        <MenuIcon value={btn} onClick={handleOnClic} fontSize='large'/>
+        <div className={btn ? s.searchNoHide : s.searchHide}>
+            <SearchBar/>
+
+        <Link to="/home/createService" className={s.button}>
+          <Button className={s.button}>Crear Servicio</Button>
+        </Link>
+        </div>
+      </div>
       <Typography variant="h4">
-        <Link style={styles.asd} to="/home">
+        <Link to="/home" className={s.button}>
           ChangApp
         </Link>
       </Typography>
 
-      <SearchBar style={styles.button} />
-      <div>
-        <Link style={{ textDecoration: "none" }} to="/home/createService">
-          <Button style={styles.button}>Crear Servicio</Button>
+      <div className={s.searchBar}>
+      <SearchBar/>
+      </div>
+      <div className={s.crearServicio}>
+        <Link to="/home/createService" className={s.button}>
+          <Button className={s.button}>Crear Servicio</Button>
         </Link>
       </div>
 
-      <div style={styles.divPrueba}>
+      <div className={s.divPrueba}>
         {notifications.length === 0 ? (
           <NotificationsIcon value={noti} onClick={handleNotification} />
         ) : (
           <NotificationsActiveIcon value={noti} onClick={handleNotification} />
         )}
-        <div style={noti ? styles.prueba : styles.prueba2}>
+        <div className={noti ? s.prueba : s.pruebaDos}>
           {notifications.length === 0 ? (
-            <p style={styles.cero}>No hay notificaciones nuevas</p>
+            <p className={s.notiCero}>No hay notificaciones nuevas</p>
           ) : (
             notifications.map((e) => {
               return (
-                <div key={e.id} style={styles.asdd}>
+                <div key={e.id} className={s.notiMap}>
                   <p>
-                    <Link style={styles.link} to="/settings/notifications">
+                    <Link className={s.link} to="/settings/notifications">
                       Nueva Notificacion
                     </Link>
                   </p>
@@ -164,7 +131,7 @@ export default function Navbar() {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 52, height: 52 }}>
+          <Avatar >
             {estado[0]?.img ? (
               <img src={estado[0]?.img} alt="?" width="52px" height="52px" />
             ) : (
@@ -210,7 +177,7 @@ export default function Navbar() {
       >
         {
           user?.isAnonymous === false ? <div>
-            <Link to="/settings/profile" style={styles.admin}>
+            <Link to="/settings/profile" className={s.admin}>
           <MenuItem>
             <Avatar /> Perfil
           </MenuItem>
@@ -218,7 +185,7 @@ export default function Navbar() {
         <Divider />        
           </div>
           : <div>
-            <Link to="/register" style={styles.admin}>
+            <Link to="/register" className={s.admin} >
           <MenuItem>
             <Avatar /> Registrarse
           </MenuItem>
@@ -227,7 +194,7 @@ export default function Navbar() {
           </div>
         }
         <Link
-          style={estado[0]?.admin === true ? styles.admin : styles.noAdmin}
+          className={estado[0]?.admin === true ? s.admin : s.noAdmin}
           to="/admin/dashboard"
         >
           <MenuItem>
@@ -242,6 +209,7 @@ export default function Navbar() {
           Cerrar sesion
         </MenuItem>
       </Menu>
+      </div>
     </Box>
   );
 }

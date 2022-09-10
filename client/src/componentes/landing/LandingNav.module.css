@@ -8,46 +8,57 @@
     position: sticky;
     top: 0;
     padding: 10px 0;
-    background-color: #1F2937;
+    background-color: #1976d2;
     color: white;
     margin: flex-start;
     z-index: 1;
 }
 
-.app-title {
+.responsive {
+    display: none;
+}
+
+.prueba {
+    font-size: 20px;
+}
+
+.appTitle {
     color: white;
     text-decoration: none;
 }
 
 
-.btn-container {
-    
+.btnContainer {
     position: absolute;
     right: 2em;
     display: flex;
     gap: 10px;
 }
 
-.anon-btn {
+.anonBtn {
     background-color: rgba(240, 248, 255, 0.74) !important;
-
-
 }
 
-.anon-btn:hover {
+.anonBtn:hover {
     background-color: aliceblue !important;
 }
 
-/* .user-btn {
-    background-color: darkslategrey !important;
+/* RESPONSIVE PARA TELEFONOS */
+@media only screen and (max-width: 414px){
+    .responsive {
+        display: block;
+        padding: 20px;
+    }
 
+    .anonBtn {
+        margin: 10px;
+    }
+
+    .btnUno {
+        margin: 10px;
+    }
+
+    .btnContainer {
+        display: none;
+    }
 }
-
-.user-btn:hover {
-    background-color: aliceblue !important;
-} */
-
-
-
-
-

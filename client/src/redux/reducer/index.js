@@ -82,37 +82,40 @@ const reducer = (state = initialStates, action) => {
         ...state,
         services: action.payload,
       };
-    case SORT_SERVICES:
-      let allSer = [...state.services];
-      let filterServices = [];
-      if (action.payload === "menor") {
-        filterServices = allSer.sort((a, b) => {
-          if (a.price > b.price) return 1;
-          if (a.price < b.price) return -1;
-          return 0;
-        });
-      }
-      if (action.payload === "mayor") {
-        filterServices = allSer.sort((a, b) => {
-          if (a.price > b.price) return -1;
-          if (a.price < b.price) return 1;
-          return 0;
-        });
-      }
-      return {
-        ...state,
-        services: filterServices,
-      };
-    case FILTER_SERVICES:
-      return {
-        ...state,
-        services:
-          action.payload === "All"
-            ? state.servicesAux
-            : state.servicesAux.filter(
-                (el) => el.category.name === action.payload
-              ),
-      };
+      case SORT_SERVICES:
+        let allSer = [...state.services];
+        let filterServices = [];
+        if (action.payload === "menor") {
+          filterServices = allSer.sort((a, b) => {
+            if (a.price > b.price) return 1;
+            if (a.price < b.price) return -1;
+            return 0;
+          });
+        }
+        if (action.payload === "mayor") {
+          filterServices = allSer.sort((a, b) => {
+            if (a.price > b.price) return -1;
+            if (a.price < b.price) return 1;
+            return 0;
+          });
+        }
+        if (action.payload === "neutro") {
+          filterServices = allSer;
+        }
+        return {
+          ...state,
+          services: filterServices,
+        };
+        case FILTER_SERVICES:
+          return {
+            ...state,
+            services:
+              action.payload === "All"
+                ? state.servicesAux
+                : state.servicesAux.filter(
+                    (el) => el.category.name === action.payload
+                  ),
+          };
     case REGISTER_USER:
       return {
         ...state,

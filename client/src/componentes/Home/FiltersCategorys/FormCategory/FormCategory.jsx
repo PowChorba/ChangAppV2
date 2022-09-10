@@ -1,15 +1,16 @@
-import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate} from "react-router-dom";
-import { getAllCategories, getAllServices, sortServices } from "../../../redux/actions";
-import "../../css/card-services.css"
+import { getAllCategories, getAllServices, sortServices } from "../../../../redux/actions";
+import s from './FormCategory.module.css'
+
 export default function FormCategory(){
     const categoryState = useSelector(state => state.categories)
     const dispatch = useDispatch()
     const [cat, setCat] = useState('')
-    const [ select, setSelect] = useState('')    
+    const [select, setSelect] = useState('')    
     const navigate = useNavigate()
+    
     useEffect(() => {
         dispatch(getAllCategories())
         dispatch(getAllServices())
@@ -40,31 +41,32 @@ export default function FormCategory(){
       };
     
     return(
-        <div className="form-filter-services">
-            <select name="precios" onChange={handleSort}>
-                <option value="neutro">Precios</option>
+        <div className={s.formFilters}>
+            <select className={s.select} name="precios" onChange={handleSort}>
+                <option value="neutro">Ordenar por: </option>
                 <option value="mayor">Mayor precio</option>
                 <option value="menor">Menor precio</option>
             </select>
             <form onSubmit={e => handleOnSubmit(e)} className="filter-category" >
                 <div 
-                className="category_filter-select"
-               
+                className={s.filterDivBox}
                 >
+                    <input id="todos" type="radio" value='todos' onChange={(e)=>handleOnClick(e)} className={s.input} />
                     <label>Todos</label>
-                    <input id="todos" type="radio" value='todos' onChange={(e)=>handleOnClick(e)}/>
                 </div>
                 {
                     categoryState.map(el => {
                         return(
-                            <div key={el.id} className="category_filter-select">
+                            <div key={el.id} className={s.filterDivBox}>
+                                <input id={el.name} type="radio" value={el.name} name={el.name} onChange={(e)=>handleOnClick(e)} className={s.input} />
                                 <label>{el.name}</label>
-                                <input id={el.name} type="radio" value={el.name} name={el.name} onChange={(e)=>handleOnClick(e)}/>
                             </div>
                         )
                     })
                 }
-                <Button variant="contained" sx={{backgroundColor: "aliceblue", color: 'black', marginTop: '5%'}} type="submit">Filtrar</Button>
+                <div className={s.divBtn}>
+                <button variant="contained" className={s.btn} type="submit">Filtrar</button>
+                </div>
             </form>
         </div>)
 }

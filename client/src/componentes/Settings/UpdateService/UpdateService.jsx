@@ -11,7 +11,8 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import toast, {Toaster} from 'react-hot-toast'
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import styles from "../../Servicios/AuxService/style";
+import s from './UpdateService.module.css'
+
 
 function validate(service) {
   let error = {};
@@ -82,24 +83,6 @@ export default function UpdateService() {
       console.log("Ya lo agregaste");
     }
   };
-
-  // const handleDay = (e) => {
-  //   if (!service.day.includes(e.target.value)) {
-  //     e.target.style.cssText = "color: #E5E7EB; background-color: #1F2937";
-  //     setService({
-  //       ...service,
-  //       day: [...service.day, e.target.value],
-  //     });
-  //   } else {
-  //     e.target.style.cssText = "color: #1F2937; background-color: #E5E7EB";
-  //     setService({
-  //       ...service,
-  //       day: service.day.filter((el) => el !== e.target.value),
-  //     });
-  //   }
-  // };
-
-
 
 //manejo de horarios de disponibilidad
 const handleTime = (e) => {
@@ -193,15 +176,15 @@ const handleDeleteTime = (e) => {
   };
 
   return (
-    <Box sx={{ width:'70%', display: "flex", flexDirection: "column", gap: "20px", textAlign: 'center' }} pt={2}>
+    <Box className={s.container} pt={2}>
       <Toaster position="top-center" reverseOrder={false} />
-      <Typography variant="h6">Modificar servicio</Typography>
+      <Typography variant="h6" className={s.titulo}>Modificar servicio</Typography>
       {error && <p>{error.name}</p>}
       <form
         onSubmit={(e) => handleSubmit(e)}
-        style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+        className={s.form}
       >
-        <Box sx={{ display: "flex", gap: "20px", justifyContent: 'center' }}>
+        <Box className={s.boxUno}>
           <label>Nombre </label>
           <TextField
             type="text"
@@ -210,6 +193,8 @@ const handleDeleteTime = (e) => {
             value={service.name}
             onChange={handleOnChange}
           />
+        </Box>
+        <Box className={s.boxUno}>  
             <label>Precio</label>
           <TextField
             type="number"
@@ -219,7 +204,7 @@ const handleDeleteTime = (e) => {
             onChange={handleOnChange}
           />
         </Box>
-        <Box variant='contained' sx={{ display: "flex", gap: "20px", flexDirection: 'column', flexWrap: 'wrap', alignItems: 'center', justifyContent: '' }}>
+        <Box variant='contained' className={s.boxDias}>
           <label>Dias disponibles</label>
           <Box>
           {[
@@ -246,36 +231,27 @@ const handleDeleteTime = (e) => {
           </Box>
         </Box>
         <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
+               className={s.boxDos}
               >
                 <Typography
                   variant="h7"
-                  sx={{ textAlign: "center", padding: "30px" }}
+                  className={s.tituloUno}
                 >
                   Agregá horarios de disponibilidad
                 </Typography>
                 <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "30%",
-                    justifyContent: "center",
-                  }}
+                  className={s.boxTres}
                 >
-                  <Box sx={{ display: "flex" }}>
+                  <Box className={s.boxHorarios}>
                     <input
-                      style={styles.time}
+                      className={s.time}
                       id="time"
                       type="time"
                       step={1800}
                       
                     />
 
-                    <Box sx={{ display: "flex" }}>
+                    <Box className={s.boxHorarios}>
                       <Button
                         variant="outlined"
                         onClick={(e) => handlePlusTime(e)}
@@ -294,14 +270,14 @@ const handleDeleteTime = (e) => {
                   </Box>
                   <Button
                     onClick={handleTime}
-                    sx={{ width: "40px", height: "45px", outline: "none" }}
+                    className={s.buttonHorario}
                     variant="outlined"
                   >
                     ➕
                   </Button>
                 </Box>
-                <Box sx={{ display: "flex", width: "100%" }}>
-                  <Box style={styles.hourAdded}>
+                <Box className={s.boxAgregarHorarios}>
+                  <Box className={s.hourAdded}>
                     {service?.hours?.map((el) => {
                       return (
                         <Box
@@ -326,22 +302,22 @@ const handleDeleteTime = (e) => {
                   </Box>
                 </Box>
               </Box>
-        <Box sx={{ display: "flex", gap: "80px", justifyContent: 'center' }}>
           <label>Descripcion</label>
+        <Box>
           <textarea
-            style={{backgroundColor: 'inherit'}}
+            className={s.textArea}
             name="description"
-            cols="40"
-            rows="4"
+            cols="50"
+            rows="3"
             placeholder={idService[0]?.description}
             value={service.description}
             onChange={handleOnChange}
           />
         </Box>
-        <Button type="submit">Cargar cambios</Button>
+        <Button type="submit" className={s.cargarDatos}>Cargar cambios</Button>
       </form>
       <NavLink style={{ textDecoration: "none" }} to="/settings/services">
-        <Button>Volver Atras</Button>
+        <Button variant="contained" className={s.cargarDatos}>Volver Atras</Button>
       </NavLink>
     </Box>
   );

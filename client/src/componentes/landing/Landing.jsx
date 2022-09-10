@@ -14,7 +14,8 @@ export default function Landing() {
 
       <Box className="landing-welcome" variant="section">
         <Typography variant="h3">Bienvenido/a a</Typography>
-        <Typography variant="h1">CHANGAPP</Typography>
+        <Typography variant="h3">CHANGAPP</Typography>
+        <br />
         <Button variant="outlined" href="#mision">
           Conocenos
         </Button>
@@ -38,8 +39,7 @@ export default function Landing() {
             <Typography variant="h4">Qué es ChangApp?</Typography>
             <Typography variant="p">
               Changa app es una aplicación web que te ayuda a ofrecer y/o
-              contratar servicios. Como cliente vas a encontrar los
-              profesionales más destacados del mercado.
+              contratar servicios.
             </Typography>
           </Box>
           <Box variant="div" className="primeraPregunta">

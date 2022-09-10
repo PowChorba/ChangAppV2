@@ -10,8 +10,7 @@ import {
 } from "../../../redux/actions";
 import { useAuth } from "../../../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
-// import Snackbar from "./Snackbar";
-import styles from "./style";
+import s from './FromService.module.css'
 //MATERIAL UI
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -26,7 +25,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-import "../../css/profile.css";
+
 
 function validate(service) {
   let error = {};
@@ -281,24 +280,24 @@ export default function FormService() {
   };
 
   return (
-    <Box style={styles.container}>
+    <Box className={s.container}>
       <div>
         <Toaster position="top-center" reverseOrder={false} />
       </div>
 
-      <Box style={styles.containerForm}>
+      <Box className={s.containerForm}>
         <Typography sx={{ margin: "20px" }} variant="h4">
           Publicá tu servicio
         </Typography>
-        <form style={styles.form} onSubmit={(e) => handleSubmit(e)}>
-          <Box sx={{ width: "100%", display: "flex" }}>
-            <Box sx={{ width: "50%", padding: "20px 10px 0 20px" }}>
-              <Box style={styles.box}>
+        <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
+          <Box className={s.boxUno}>
+            <Box className={s.boxDos}>
+              <Box className={s.box}>
                 <TextField
                   id="outlined-basic"
                   label="Nombre del Servicio"
                   variant="outlined"
-                  style={styles.input}
+                  className={s.input}
                   type="text"
                   name="name"
                   value={service.name}
@@ -306,7 +305,7 @@ export default function FormService() {
                 />
               </Box>
 
-              <Box style={styles.box}>
+              <Box className={s.box}>
                 <FormControl fullWidth sx={{ padding: "7px 0" }}>
                   <InputLabel id="categoryLabel">Categoría</InputLabel>
                   <Select
@@ -324,12 +323,12 @@ export default function FormService() {
                 </FormControl>
               </Box>
 
-              <Box style={styles.box}>
+              <Box className={s.box}>
                 <TextField
                   id="outlined-basic"
                   label="Descripción"
                   variant="outlined"
-                  style={styles.input}
+                  className={s.input}
                   type="text"
                   name="description"
                   value={service.description}
@@ -337,12 +336,12 @@ export default function FormService() {
                 />
               </Box>
 
-              <Box style={styles.box}>
+              <Box className={s.box}>
                 <TextField
                   id="outlined-basic"
                   label="Precio del servicio"
                   variant="outlined"
-                  style={styles.input}
+                  className={s.input}
                   type="number"
                   name="price"
                   value={service.price}
@@ -350,15 +349,15 @@ export default function FormService() {
                 />
               </Box>
             </Box>
-            <Box sx={{ width: "50%", padding: "20px 20px 0 10px" }}>
-              <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box className={s.boxTres}>
+              <Box className={s.boxCuatro}>
                 <Typography
                   variant="h7"
-                  sx={{ textAlign: "center", padding: "30px" }}
+                  className={s.textoUno}
                 >
                   Seleccioná días de disponibilidad
                 </Typography>
-                <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <Box className={s.boxCinco}>
                   {[
                     "Lunes",
                     "Martes",
@@ -384,29 +383,20 @@ export default function FormService() {
               </Box>
 
               <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
+                className={s.boxCuatro}
               >
                 <Typography
                   variant="h7"
-                  sx={{ textAlign: "center", padding: "30px" }}
+                  className={s.textoUno}
                 >
                   Agregá horarios de disponibilidad
                 </Typography>
                 <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    width: "30%",
-                    justifyContent: "center",
-                  }}
+                  className={s.boxSeis}
                 >
                   <Box sx={{ display: "flex" }}>
                     <input
-                      style={styles.time}
+                      className={s.time}
                       id="time"
                       type="time"
                       step={3600}
@@ -433,14 +423,14 @@ export default function FormService() {
                   </Box>
                   <Button
                     onClick={handleTime}
-                    sx={{ width: "40px", height: "45px", outline: "none" }}
+                    className={s.buttonMas}
                     variant="outlined"
                   >
                     ➕
                   </Button>
                 </Box>
                 <Box sx={{ display: "flex", width: "100%" }}>
-                  <Box style={styles.hourAdded}>
+                  <Box className={s.hourAdded}>
                     {service?.hours?.map((el) => {
                       return (
                         <Box
@@ -467,7 +457,7 @@ export default function FormService() {
               </Box>
             </Box>
           </Box>
-          <Box style={styles.bottomButtons}>
+          <Box className={s.bottomButtons}>
             <Link style={{ textDecoration: "none" }} to="/home">
               <Button sx={{ color: "#1F2937" }} variant="outlined">
                 Volver atras

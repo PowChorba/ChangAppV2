@@ -4,16 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllServices } from "../../../redux/actions";
 import { NavLink, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import FormCategory from "./FormCategory";
-import "../../css/filter-services.css"
-import '../../css/empty.css'
-import "../../css/card-services.css"
-import { Button, Typography } from "@mui/material";
+import FormCategory from "./FormCategory/FormCategory";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import error from '../../../404.png'
 import { useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
 import Footer from '../../Footer'
+import s from './FilterCategory.module.css'
+
 
 export default function FilterCategory() {
   const services = useSelector((state) => state.services);
@@ -51,7 +50,7 @@ export default function FilterCategory() {
   }, [dispatch]);
 
   
-  if (services.length === 0)
+  if (!services)
     return (
       <div style={{backgroundColor: 'rgba(0, 0, 0, 0.644)'}}>
         <Navbar />
@@ -63,54 +62,62 @@ export default function FilterCategory() {
     );
   else  
   return (
-    <div className="service-container-full">
+    <div>
       <Navbar />
+      <div className={s.contenedor}>
+      <div>
+        <FormCategory />
+      </div>
+      <div className={s.containerSegundo}>
       
-      <FormCategory />
-      <div className="container-services">
-      
-      <div style={{ margin:"15px", color: '#fff'}}>
+      <div className={s.contenedorTodo}>
       <Typography variant="h5">{param.name}</Typography>
       </div>
       {filterUsers.length === 0 ? (
-        <Box className="empty-container" sx={{textAlign: 'center', display: 'flex', flexDirection:'column', alignItems: 'center', maxWidth:'80%', position: 'relative', margin: '40px auto'  }} >
+        <div className={s.emptyContainer} >
             <Box>
                 <Typography variant="h5" mb={5}>  
                     No se encuentra ningun servicio para esta categoria{" "}
-                    <NavLink className='linkk' to="/home/createService">se el primero en postularte!</NavLink>
+                    <NavLink className={s.link} to="/home/createService">se el primero en postularte!</NavLink>
                 </Typography>
             { 
               <img src={error} alt="?" width="182px" height="182px" />
             }
             </Box>
-        </Box>
+        </div>
       ) : (
         userSlice?.map((e) => {
           return (
-            <div className="cards-services"
+            <div className={s.cardServices}
               key={e.id}
             >
-              <img src={e.user?.img} alt="No tiene" width='64px' height="64px"/>
-              <h3>Servicio: {e.name}</h3>
-              <h4>{e.user?.firstName}</h4>
-              <p>{e.description}</p>
-              <p>${e.price}</p>
-              <Link to={`/home/services/${e.id}`}>
-                <Button variant="contained"  sx={{ backgroundColor: "#354152", margin: '5px' }} >Haz tu reserva</Button>
-              </Link>
-              <Link to={`/home/public/${e.user?.id}`}>
-                <Button variant="contained"  sx={{ backgroundColor: "#354152" }} >Ver Perfil</Button>
-              </Link>
+              <div className={s.cardServicesUno}>
+                <img src={e.user?.img} alt="No tiene" className={s.imagen}/>
+              </div>
+              <div className={s.cardServicesDos}>
+                <h3>Servicio: {e.name}</h3>
+                <h4>{e.user?.firstName}</h4>
+                <p>{e.description}</p>
+                <p>${e.price}</p>
+                <Link to={`/home/services/${e.id}`}>
+                  <button className={s.btn} >Haz tu reserva</button>
+                </Link>
+                <Link to={`/home/public/${e.user?.id}`}>
+                  <button  className={s.btn} >Ver Perfil</button>
+                </Link>
+              </div>
             </div>
           );
         })
       )}
+    <div className={filterUsers.length === 0 ? s.hide : s.noHide}>
+      <button  className={s.btn} onClick={handleAnterior}>{'<'}</button>
+      <span>{pages} de {paginas} </span>
+      <button  className={s.btn} onClick={handleSiguiente}>{'>'}</button>
     </div>
-    <div style={{textAlign: 'center'}}>
-      <Button  variant="contained" sx={{ backgroundColor: "#354152", margin: '5px', color:'#fff' }} onClick={handleAnterior}>{'<'}</Button>
-      <span style={{color: '#fff'}}>{pages} de {paginas}</span>
-      <Button  variant="contained" sx={{ backgroundColor: "#354152", margin: '5px', color:'#fff' }} onClick={handleSiguiente}>{'>'}</Button>
     </div>
+  </div>
   </div>
   );
 }
+

@@ -2,8 +2,9 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../../context/authContext";
-import { getUserEmail, registerUser } from "../../../redux/actions";
+import { registerUser } from "../../../redux/actions";
 import toast, {Toaster} from 'react-hot-toast'
+import s from './CompleteProfile.module.css'
 
 function validate(fire) {
   let error = {};
@@ -14,7 +15,7 @@ function validate(fire) {
   //ERROR APELLIDO
   else if (!fire.lastName) error.lastname = "Debes ingresar un apellido";
   else if (!/^[a-z ñ]+$/i.test(fire.lastName))
-    error.lastname =
+    error.lastName =
       "El apellido no puede contener numeros ni caracteres especiales";
   //ERROR FECHA DE NACIMIENTO
   else if (!fire.birthDate)
@@ -44,11 +45,6 @@ export default function CompleteProfile() {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   
-  //PARA TRAER LA DATA DE BASE DE DATOS
-  // useEffect(() => {
-  //   dispatch(getUserEmail(user?.email));
-  // }, [dispatch, user?.email]);
-
   //PARA QUE NO PONGAN CUALQUIER INFORMACION
   useEffect(() => {
     if (
@@ -93,12 +89,13 @@ export default function CompleteProfile() {
     }, 2000);
   };
   return (
-    <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor: "#E5E7EB"}}>
-      <Box sx={{border:'solid grey 1px', width:'60%', padding:'0 4%', margin:'4%', display:'flex', flexDirection:'column', borderRadius:'10px'}}>
-        <Typography sx={{padding:'6% 0', textAlign:'center'}} variant='h5'>Completar tus datos antes de seguir</Typography>
-        <form style={{display:'flex',justifyContent:'center', flexDirection:'column'}} onSubmit={(e) => handleOnSubmit(e)}>
-            <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <Typography sx={{fontSize:'1.3rem'}}>
+    <Box className={s.container}>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Box className={s.boxUno}>
+        <Typography className={s.textoUno} variant='h5'>Completar tus datos antes de seguir</Typography>
+        <form className={s.form} onSubmit={(e) => handleOnSubmit(e)}>
+            <Box className={s.boxDos}>
+                <Typography className={s.textoDos}>
                   Nombre: 
                 </Typography>
                 <TextField
@@ -110,8 +107,8 @@ export default function CompleteProfile() {
                   />
               </Box>
 
-              <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <Typography sx={{fontSize:'1.3rem'}}>
+              <Box className={s.boxDos}>
+                <Typography className={s.textoDos}>
                   Apellido: 
                 </Typography>
                 <TextField
@@ -123,21 +120,21 @@ export default function CompleteProfile() {
                   />
               </Box>
 
-              <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <Typography sx={{fontSize:'1.3rem'}}>
+              <Box className={s.boxDos}>
+                <Typography className={s.textoDos}>
                   Edad: 
                 </Typography>
                 <TextField
                   sx={{padding:'1%'}}                
-                  type="text"
+                  type="number"
                   value={fire.birthDate}
                   name="birthDate"
                   onChange={handleOnChange}
                   />
               </Box>
 
-              <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <Typography sx={{fontSize:'1.3rem'}}>
+              <Box className={s.boxDos}>
+                <Typography className={s.textoDos}>
                   Localidad: 
                 </Typography>
                 <TextField
@@ -149,8 +146,8 @@ export default function CompleteProfile() {
                   />
               </Box>
 
-              <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <Typography sx={{fontSize:'1.3rem'}}>
+              <Box className={s.boxDos}>
+                <Typography className={s.textoDos}>
                   Descripción: 
                 </Typography>
                 <TextField

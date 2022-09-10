@@ -1,0 +1,142 @@
+.container {
+    min-height: 100vh;
+    height: calc(100vh - 82px);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerForm {
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form {
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 100%;
+    margin: 10px 0px 10px 0;
+}
+
+.time {
+    width: 80px;
+    font-size: 2em;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 7px;
+    outline: none;
+}
+
+.hourAdded {
+    height: 50px;
+    margin: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+
+.bottomButtons {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    width: 50%;
+}
+
+/* EXTRAS  */
+
+.boxUno {
+    width: 100%;
+    display: flex;
+
+}
+
+.boxDos {
+    width: 50%;
+    padding: 20px 10px 0 20px;
+}
+
+.boxTres {
+    width: 50%;
+    padding: 20px 20px 0 10px;
+}
+
+.boxCuatro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boxCinco {
+    display: flex;
+    flex-direction: row;
+}
+
+.boxSeis {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: center;
+}
+
+.textoUno{
+    text-align: center;
+    padding: 30px;
+}
+
+.buttonMas {
+    width: 40px;
+    height: 45px;
+    outline: none;
+}
+
+@media only screen and (max-width: 414px){ 
+    .container {
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+    
+    .boxUno {
+        width: 100%;
+        display: block;
+    
+    }
+    .boxCinco {
+        margin-left: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .boxSeis{
+        margin-left: 50px;
+    }
+
+    .containerForm {
+        text-align: center;
+        padding: 5px;
+        width: 100%;
+        display: grid;
+        flex-direction: none;
+        align-items: center;
+        justify-items: center;
+    }
+}

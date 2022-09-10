@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  allNotifications,
-  deleteNotification,
-  getUserEmail,
-} from "../../redux/actions";
-import { useAuth } from "../../context/authContext";
+import { deleteNotification} from "../../redux/actions";
 import { Box, Button, Typography } from "@mui/material";
-import "../css/empty.css";
-
-import styles from "./Request/style";
+import s from './Notificaciones.module.css'
 import error from "../../404.png";
 
 export default function Notifications() {
-  const { user } = useAuth();
   let notifications = useSelector((state) => state.allNotifications);
   const userState = useSelector((state) => state.filter);
   const dispatch = useDispatch();
@@ -23,9 +15,9 @@ export default function Notifications() {
   notifications = notifications.reverse();
 
   //Paginado para los servicios
-  const paginas = Math.ceil(notifications.length / 3);
+  const paginas = Math.ceil(notifications.length / 7);
   const [pages, setPages] = useState(1);
-  const [notisPerPage] = useState(3);
+  const [notisPerPage] = useState(7);
   const ultima = pages * notisPerPage;
   const primera = ultima - notisPerPage;
   const notisSlice = notifications.slice(primera, ultima);
@@ -47,10 +39,6 @@ export default function Notifications() {
     window.scrollTo(0, 0);
   };
 
-  // useEffect(() => {
-  //   dispatch(allNotifications());
-  //   dispatch(getUserEmail(user?.email));
-  // }, [dispatch, user?.email]); 
   const handleOnClick = (e) => {
     e.preventDefault();
     dispatch(deleteNotification(e.target.id));
@@ -61,71 +49,40 @@ export default function Notifications() {
 
   return (
     <Box
-      sx={{
-        width: "70%",
-        height:'88vh',
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexDirection:'column'
-      }}
+      className={s.boxUno}
     >
       <Box
-        sx={{
-          width: "95%",
-          height:'80%',
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "4%",
-        }}
+        className={s.boxDos}
       >
         {notifications.length === 0 ? (
           <Box
-            className="empty-container"
-            sx={{
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+            className={s.emptyContainer}
           >
             <Typography variant="h6" mb={5}>
-              Sin noticias actualmente
+              Sin notificaciones nuevas por el momento
             </Typography>
-
             {<img src={error} alt="?" width="182px" height="182px" />}
-            {/* </Avatar> */}
           </Box>
         ) : (
           notisSlice.map((e) => {
             return (
               <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  border: "solid grey 1px",
-                  borderRadius: "10px",
-                  margin: "1% 0px",
-                }}
+                className={s.boxTres}
                 key={e.id}
               >
-                <Box sx={{ padding: "2%" }}>
-                  <Typography sx={{ fontSize: "1.3rem" }}>
+                <Box className={s.boxCuatro}>
+                  <Typography className={s.texto}>
                     Notificacion de {e.userNotification?.firstName}{" "}
                   </Typography>
-                  <Typography sx={{ fontSize: "1.3rem" }}>
+                  <Typography className={s.texto}>
                     {e.message}
                   </Typography>
                 </Box>
                 <Button
-                  sx={{
-                    borderRadius: "0 10px 10px 0",
-                    backgroundColor: "#1F2937",
-                  }}
+                  className={s.boxBoton}
                   variant="contained"
+                  color="error"
+                  size="small"
                   id={e.id}
                   onClick={handleOnClick}
                 >
@@ -137,10 +94,10 @@ export default function Notifications() {
         )}
 
       </Box>
-      <Box style={styles.paginadoDiv}>
-          <button style={styles.btnPaginado} onClick={handleAnterior}>{'<'}</button>
+      <Box className={s.paginadoDiv}>
+          <button className={s.btnPaginado} onClick={handleAnterior}>{'<'}</button>
           {pages} of {paginas}
-          <button style={styles.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
+          <button className={s.btnPaginado} onClick={handleSiguiente}>{'>'}</button>
         </Box>
 
     </Box>

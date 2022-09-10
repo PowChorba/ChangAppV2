@@ -1,0 +1,99 @@
+.acepted {
+    display: flex;
+    border: 2px solid #58CC22;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.rejected {
+    display: flex;
+    border: 1px solid #E00A0A;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.pending{
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+/* PAGINADO */
+.btnPaginado {
+    cursor: pointer;
+    background-color: #1976d2;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    color: #Fff;
+    margin: 5px;
+    outline: 0;
+}
+
+.paginadoDiv {
+    text-align: center;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 60%;
+    bottom: 0px;
+}
+
+/* EMPTY CONTAINER */
+.emptyContainer{
+    width: 70%;
+    margin: 20px auto;
+    padding: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(182, 182, 182, 0.1);
+    box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
+}
+
+.lowSection {
+    display: flex;
+    align-items: center;
+}
+
+.linkk {
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+    border-bottom: 1px solid #000;
+}
+
+/* SE COMPLICO */
+.contenedorGeneral {
+    width: 70%;
+}
+
+.boxDos {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.boxTres {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 2%;
+}
+
+
+@media only screen and (max-width: 414px){ 
+    
+    .boxDos {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0 10px;
+    }
+}

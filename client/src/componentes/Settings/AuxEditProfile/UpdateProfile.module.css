@@ -1,0 +1,84 @@
+.container {
+    margin: 20px;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.form {
+    width: 90%;
+    margin: 0px auto;
+}
+
+.bottomSection {
+    padding: 10px;
+    text-align: center;
+
+}
+
+.imgInput {
+    width: 100%;
+    display: none;
+}
+
+.formLabel {
+    font-size: 1.2rem;
+    margin: 5px;
+}
+
+.editImg{
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+.relative{
+    position: relative;
+}
+
+.editIcon {
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 50%;
+    background-color: #E5E7EB;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.imgStyle {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.textArea{
+    resize: none;
+    width: 500px;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}   
+
+@media only screen and (max-width: 414px){ 
+    .bottomSection {
+        padding: 0px;
+        text-align: center;
+    
+    }
+
+    .textArea{
+        resize: none;
+        border-radius: 5px;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        width: 150px;
+        height: 75px;
+    }  
+}

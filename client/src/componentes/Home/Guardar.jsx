@@ -4,10 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
 import Footer from "../Footer";
 import Navbar from "../PrivateRoute/Navbar";
-import Reviews from "../reviews/Reviews";
+import Reviews from "./AuxHome/Reviews";
 import Category from "./AuxHome/Category";
 import CircularProgress from '@mui/material/CircularProgress';
-import '../css/revwievs.css'
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../redux/actions";
 
@@ -37,10 +36,9 @@ export default function Guardar() {
         <div>
           <Category />
         </div>
-        <Box className="rev-section">
-          <Typography variant="h4" sx={{position: 'relative ',margin: '70px auto', borderBottom:'solid 2px black', paddingBottom: '40px', width:'700px'}}>Algunos comentarios de nuestros Usuarios</Typography>
+        <div className="rev-section">
           <Reviews />
-        </Box>
+        </div>
         <Footer />
       </div>
     );

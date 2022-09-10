@@ -10,6 +10,7 @@ import { Button, Typography, TextField } from "@mui/material";
 import camera from "../../pngwing.com.png";
 import Nav from "../landing/LandingNav";
 import toast, { Toaster } from "react-hot-toast";
+import s from "./Register.module.css";
 
 function validate(user) {
   let error = {};
@@ -29,7 +30,8 @@ function validate(user) {
     error.birthDate =
       "Para registrarte a esta plataforma debes ser mayor de 18 años";
   // ERROR UBICACION
-  else if (!/^[a-z ñ , ]+$/i.test(user.location)) error.location = 'La direccion debe ser valida'     
+  else if (!/^[a-z ñ , ]+$/i.test(user.location))
+    error.location = "La direccion debe ser valida";
   //ERROR EMAIL
   else if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(user.email))
     error.email = "El formato ingresado es invalido";
@@ -46,6 +48,7 @@ function validate(user) {
 }
 
 export default function Register() {
+  const { signUp } = useAuth();
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -53,11 +56,10 @@ export default function Register() {
     birthDate: "",
     img: "",
     password: "",
-    description: '',
-    location: '',
+    description: "",
+    location: "",
   });
   const [boton, setBoton] = useState(false);
-  const { signUp } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -124,11 +126,11 @@ export default function Register() {
     try {
       await signUp(user.email, user.password);
       dispatch(registerUser(user));
-      toast('Registro completado', {
-        icon: '👏',
+      toast("Registro completado", {
+        icon: "👏",
       });
       setTimeout(() => {
-        navigate('/home')
+        navigate("/home");
       }, 2000);
     } catch (error) {
       if (error.code === "auth/weak-password") {
@@ -140,68 +142,18 @@ export default function Register() {
     }
   };
 
-  const styles = {
-    container: {
-      padding: "20px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "100vh",
-      backgroundColor: "#E5E7EB",
-      color: "#1F2937",
-    },
-    containerForm: {
-      width: "40%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      border: "solid 3px lightblue",
-      borderRadius: "15px",
-      padding: "35px",
-    },
-    box: {
-      display: "flex",
-      flexDirection: "column",
-      width: "100%",
-    },
-    form: {
-      width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      gap: "15px",
-      alignItems: "center",
-      marginBottom: "15px",
-    },
-    input: {
-      width: "100%",
-      margin: "3px 0",
-    },
-    imgInput: {
-      width: "100%",
-      display: "none",
-    },
-  };
-
   return (
     <div>
       <Nav />
       <Toaster position="top-center" reverseOrder={false} />
-      <Box style={styles.container}>
-        <Box style={styles.containerForm}>
+      <Box className={s.container}>
+        <Box className={s.containerForm}>
           <Typography variant="h4" sx={{ padding: "10px" }}>
             Registrarse
           </Typography>
           {fire && <p>{fire}</p>}
-          <form style={styles.form} onSubmit={(e) => handleOnSubmit(e)}>
-            <Box
-              sx={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            >
+          <form onSubmit={(e) => handleOnSubmit(e)}>
+            <Box className={s.boxUno}>
               <Typography variant="h6">Foto de Perfil: </Typography>
               <label for="inputTag">
                 <img
@@ -211,9 +163,9 @@ export default function Register() {
                 />
                 <input
                   id="inputTag"
-                  style={styles.imgInput}
+                  className={s.imgInput}
                   type="file"
-                  accept="image/jpeg, image/png" 
+                  accept="image/jpeg, image/png"
                   name="img"
                   onChange={handleImage}
                 />
@@ -223,92 +175,103 @@ export default function Register() {
               id="outlined-basic"
               label="Nombre"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="text"
               name="firstName"
               value={user.firstName}
+              error={error.name}
               onChange={handleOnChange}
             />
-            {error.name && <p>{error.name}</p>}
+            {error.name && <p className={s.error}>{error.name}</p>}
 
             <TextField
               id="outlined-basic"
               label="Apellido"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="text"
               name="lastName"
               value={user.lastName}
+              error={error.lastname}
               onChange={handleOnChange}
             />
-            {error.lastname && <p>{error.lastname}</p>}
+            {error.lastname && <p className={s.error}>{error.lastname}</p>}
 
             <TextField
               id="outlined-basic"
               label="Edad"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="number"
               name="birthDate"
               value={user.birthDate}
+              error={error.birthDate}
               onChange={handleOnChange}
             />
-            {error.birthDate && <p>{error.birthDate}</p>}
-          
+            {error.birthDate && <p className={s.error}>{error.birthDate}</p>}
+
             <TextField
               id="outlined-basic"
               label="Descripcion"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="textarea"
               name="description"
               value={user.description}
+              error={error.description}
               onChange={handleOnChange}
-            />  
+            />
 
-<TextField
+            <TextField
               id="outlined-basic"
               label="Ubicacion"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="textarea"
               name="location"
               value={user.location}
+              error={error.location}
               onChange={handleOnChange}
-            /> 
-             {error.location && <p>{error.location}</p>}
+            />
+            {error.location && <p className={s.error}>{error.location}</p>}
 
             <TextField
               id="outlined-basic"
               label="Email"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="email"
               name="email"
               value={user.email}
+              error={error.email}
               onChange={handleOnChange}
             />
-            {error.email && <p>{error.email}</p>}
+            {error.email && <p className={s.error}>{error.email}</p>}
 
             <TextField
               id="outlined-basic"
               label="Contraseña"
               variant="outlined"
-              style={styles.input}
+              className={s.input}
+              style={{margin: '10px'}}
               type="password"
               name="password"
               value={user.password}
+              error={error.password}
               onChange={handleOnChange}
             />
-            {error.password && <p>{error.password}</p>}
-            <p>Al hacer clic en Registrarte, aceptas las Condiciones, la Política de privacidad y la Política de cookies.</p>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-            >
+            {error.password && <p className={s.error}>{error.password}</p>}
+            <p>
+              Al hacer clic en Registrarte, aceptas las Condiciones, la Política
+              de privacidad y la Política de cookies.
+            </p>
+            <Box className={s.boxUno}>
               <Button variant="outlined" type="submit" disabled={!boton}>
                 Registrarse
               </Button>

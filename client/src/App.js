@@ -38,7 +38,8 @@ import ProfileRev from "./componentes/Settings/ProfileRev";
 
 function App() {
   return (
-    <AuthProvider>
+    <div className="App">
+      <AuthProvider>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
@@ -205,6 +206,7 @@ function App() {
         </Route>
       </Routes>
     </AuthProvider>
+    </div>
   );
 }
 

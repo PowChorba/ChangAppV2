@@ -1,0 +1,96 @@
+.container {
+    padding: 5px 0;
+    background-color: #033d94;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+.menuIcon {
+    display: none;
+}
+
+
+.button {
+    color: #fff !important; 
+    text-decoration: none;
+} 
+
+/* NOTIFICACIONES */
+
+.divPrueba {
+    position: relative;
+}
+
+.prueba {
+    display: none;
+}
+
+.pruebaDos{
+    background-color: #033d94;
+    text-align: center;
+    position: absolute;
+    right: -60px;
+    border-radius: 5px;
+    width: 150px;
+    height: 150px;
+    font-size: 14px;
+    z-index: 10;
+}
+
+.notiMap {
+    margin: 15px 5px;
+    background-color: #fff;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+}
+
+.notiCero {
+    background-color: #fff;
+    text-align: center;
+    color: #000;
+    margin: 15px 5px;
+}
+
+/* ADMIN */
+.noAdmin {
+    display: none;
+}
+
+.admin {
+    text-decoration: none;
+    color: #000;
+}
+
+/* RESPONSIVE PARA TELEFONOS  */
+@media only screen and (max-width: 414px){ 
+    .menuIcon{
+        display: block;
+    }
+    .searchBar, .crearServicio, .divPrueba{
+        display: none;
+    }
+    .searchNoHide{
+        width: 90%;
+        background-color: #033d94;
+        padding: 20px;
+        text-align: center;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+    }
+    .searchHide {
+        display: none;
+    }
+
+
+
+
+}

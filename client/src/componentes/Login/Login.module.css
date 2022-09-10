@@ -1,0 +1,73 @@
+.container {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.form {
+    width: 100%;
+}
+
+
+/* EXTRAS PORQUE HACEN EN LINEA!! */
+
+.tituloUno {
+    margin-bottom: 20px;
+}
+
+.tituloRegistro {
+    font-weight: bold;
+    margin: 0;
+}
+
+.link {
+    color: #000;
+}
+
+.buttonGoogle {
+    background-color: #030303;
+    color: #fff;
+
+}
+
+.buttonGoogle:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* RESPONSIVE PARA TELEFONOS */
+@media only screen and (max-width: 414px){
+    .container {
+        padding: 5px;
+    }
+    
+    .login {
+        text-align: center;
+        width: 75%;
+        margin: 50px auto;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 10px;
+    }
+
+    .input {
+        width: 100%;
+        margin: 20px 0 ;
+    }
+
+    .tituloUno {
+        margin-bottom: 10px;
+    }
+}
+
+

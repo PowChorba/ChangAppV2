@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E5E7EB;
+}
+
+.boxUno {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 50px;
+    margin: 65px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.textoUno {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.boxDos {
+    display: grid;
+    text-align: center;
+    margin: 5px;
+}
+
+.textoDos {
+    font-size: 1.3rem;
+}
+

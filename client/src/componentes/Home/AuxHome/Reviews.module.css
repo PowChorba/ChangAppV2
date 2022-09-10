@@ -1,0 +1,53 @@
+
+
+.divEnunciado{
+    text-align: center;
+    margin: 75px;
+}
+
+.enunciado {
+    margin: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 50%;      
+}
+
+.contenedorCards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-evenly;
+    width: 75%;
+    margin: 20px auto;
+}
+
+.avatar {
+    width: 152px;
+    height: 152px;
+    margin-top: -75px;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+
+.reviewCard {
+    align-items: center;
+    text-align: center;
+    box-shadow: 4px 8px 5px 0px rgba(0, 0, 0, 0.363);
+    border-radius: 10px;
+    background-color: #033d94;
+    color: rgba(255, 255, 255, 0.763);
+    padding-bottom: 35px;
+    margin: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* RESOPNSIVE PAR TELEFONOS */
+@media only screen and (max-width: 414px){ 
+    .contenedorCards{
+        grid-template-columns: 1fr;
+    }
+
+    .reviewCard {
+        margin: 50px;
+    }
+}

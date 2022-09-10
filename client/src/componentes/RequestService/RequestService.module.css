@@ -1,0 +1,171 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.containerRequest{
+    width: 60%;
+    margin: 20px 10px 20px 20px;
+}
+
+.containerUser {
+    margin: 20px 20px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.userDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.containerService{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.containerRequestForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 3px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.box {
+    display: flex;
+}
+
+.userPic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.userName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.selectedButton {
+    color: #fff;
+    background-color: #000;
+}
+
+.containerHours {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.hours {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid rgaba(0,0,0,0.3);
+}
+
+/* EXTRAS PORQUE HACEN ESTILO EN LINEA!! */
+.boxUno {
+    display: flex;
+    width: 100%;
+    margin: 20px;
+}
+
+.boxDos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.boxTres {
+    width: 100%;
+    padding: 20px;
+}
+
+.boxCuatro {
+    display: flex;
+    justify-content: center;
+}
+
+.boxCinco {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.titutloUno {
+    color: green;
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 414px){ 
+    .container {
+        display: block;
+    }
+    .boxUno {
+        display: block;
+        width: 100%;
+        margin: 20px;
+    }
+    .containerService{
+        width: 100%;
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 3px;
+        padding: 20px;
+    }
+    .containerRequestForm {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid rgba(0,0,0,0.3);
+        border-radius: 3px;
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .boxCuatro {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .containerHours {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 10px;
+    }
+    .boxCinco {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px;
+    }
+    .userDetail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        border: none;
+        border-radius: 3px;
+    }
+}
