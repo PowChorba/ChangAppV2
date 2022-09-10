@@ -78,7 +78,7 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      <div className={s.seccionFooterLista}>
+      {/* <div className={s.seccionFooterLista}>
         <ul className={s.footerLista}>
           <p>Desarrollado por</p>
           <li className={s.footerListaItem}>
@@ -132,7 +132,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
 
       <form ref={form} onSubmit={sendMail} className={s.formulario}>
         <h3 className={s.formularioTitulo}>Contactanos</h3>
