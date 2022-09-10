@@ -27,7 +27,9 @@ export default function DeleteCategory() {
         dispatch(deleteCategory(category.id))
         setError("");
      
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000);
        
       };
     
