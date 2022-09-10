@@ -45,9 +45,11 @@
 
 /* RESPONSIVE PARA TELEFONOS */
 @media only screen and (max-width: 414px){
+    
     .responsive {
-        display: block;
+        display: flex;
         padding: 20px;
+        flex-direction: column;
     }
 
     .anonBtn {
@@ -55,7 +57,10 @@
     }
 
     .btnUno {
+        display: flex;
+        gap: 10px;
         margin: 10px;
+        flex-direction: column;
     }
 
     .btnContainer {

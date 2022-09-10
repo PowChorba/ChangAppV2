@@ -1,15 +1,17 @@
 .footer {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     color: white;
     background-color: #033d94;
   }
   
-  .seccionFooterLista {
-    margin-right: 20px;
-  }
+  /* .seccionFooterLista {
+    
+    width: 80%;
+  } */
   
   .footerLista {
     list-style: square;
