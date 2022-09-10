@@ -35,6 +35,9 @@ import AdminPrivate from "./componentes/PrivateRoute/AdminPrivate";
 import Services from "./componentes/admin/Services";
 import Request from "./componentes/admin/Requests";
 import ProfileRev from "./componentes/Settings/ProfileRev";
+import axios from "axios";
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 function App() {
   return (

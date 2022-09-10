@@ -31,12 +31,11 @@ export const ADMIN_UPDATE = "ADMIN_UPDATE";
 export const ALL_REVIEWS = "ALL_REVIEWS";
 export const SEARCH_CATEGORY = "SEARCH_CATEGORY";
 
-const EP = "http://localhost:3001";
 
 //ACTIONS PARA LOS USUARIOS
 export function registerUser(user) {
   return async function (dispatch) {
-    await axios.post(`${EP}/user`, user).then((detalle) =>
+    await axios.post(`/user`, user).then((detalle) =>
       dispatch({
         type: REGISTER_USER,
         payload: detalle.data,
@@ -46,7 +45,7 @@ export function registerUser(user) {
 }
 export function getUserEmail(email) {
   return async function (dispatch) {
-    await axios.get(`${EP}/user/${email}`).then((detalle) =>
+    await axios.get(`/user/${email}`).then((detalle) =>
       dispatch({
         type: FILTER,
         payload: detalle.data,
@@ -57,7 +56,7 @@ export function getUserEmail(email) {
 
 export function getUserLocation(location) {
   return async function (dispatch) {
-    await axios.get(`${EP}/user/${location}`).then((detalle) =>
+    await axios.get(`/user/${location}`).then((detalle) =>
       dispatch({
         type: USER_LOCATION,
         payload: detalle.data,
@@ -68,7 +67,7 @@ export function getUserLocation(location) {
 
 export function updateUser(email, data) {
   return async function (dispatch) {
-    await axios.put(`${EP}/user/${email}`, data).then((detalle) =>
+    await axios.put(`/user/${email}`, data).then((detalle) =>
       dispatch({
         type: UPDATE,
         payload: detalle.data,
@@ -80,7 +79,7 @@ export function updateUser(email, data) {
 export function bannedState(id, data) {
   return async function (dispatch) {
     try {
-      await axios.put(`${EP}/users/${id}`, data).then((detalle) =>
+      await axios.put(`/users/${id}`, data).then((detalle) =>
         dispatch({
           type: NEW_BANNED_STATE,
           payload: detalle.data,
@@ -94,7 +93,7 @@ export function bannedState(id, data) {
 
 export function adminState(id, data) {
   return async function (dispatch) {
-    await axios.put(`${EP}/userr/${id}`, data).then((detalle) =>
+    await axios.put(`/userr/${id}`, data).then((detalle) =>
       dispatch({
         type: ADMIN_UPDATE,
         payload: detalle.data,
@@ -107,7 +106,7 @@ export function adminState(id, data) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${EP}/services/${id}`);
+      var json = await axios.get(`/services/${id}`);
 
       return dispatch({
         type: GET_DETAILS,
@@ -121,7 +120,7 @@ export function getDetail(id) {
 
 export function getAllServices() {
   return async function (dispatch) {
-    const dataDb = await axios(`${EP}/services`);
+    const dataDb = await axios(`/services`);
     return dispatch({
       type: GET_ALL_SERVICES,
       payload: dataDb.data,
@@ -131,7 +130,7 @@ export function getAllServices() {
 
 export function getAllCategories() {
   return async function (dispatch) {
-    const dataDb = await axios(`${EP}/category`);
+    const dataDb = await axios(`/category`);
     return dispatch({
       type: GET_ALL_CATEGORIES,
       payload: dataDb.data,
@@ -148,7 +147,7 @@ export function sortServices(payload) {
 
 export function getName(name) {
   return async (dispatch) => {
-    const dataDb = await axios(`${EP}/services/search?name=` + name);
+    const dataDb = await axios(`/services/search?name=` + name);
     return dispatch({
       type: SERVICE_NAME,
       payload: dataDb.data,
@@ -158,7 +157,7 @@ export function getName(name) {
 
 export function postService(service) {
   return async function (dispatch) {
-    await axios.post(`${EP}/services`, service).then((detalle) =>
+    await axios.post(`/services`, service).then((detalle) =>
       dispatch({
         type: REGISTER_SERVICE,
         payload: detalle.data,
@@ -169,7 +168,7 @@ export function postService(service) {
 
 export function updateService(id, service) {
   return async function (dispatch) {
-    await axios.put(`${EP}/services/${id}`, service).then((detalle) =>
+    await axios.put(`/services/${id}`, service).then((detalle) =>
       dispatch({
         type: UPDATE_SERVICE,
         payload: detalle.data,
@@ -180,7 +179,7 @@ export function updateService(id, service) {
 
 export function getServiceById(id) {
   return async function (dispatch) {
-    await axios.get(`${EP}/services/${id}`).then((detalle) =>
+    await axios.get(`/services/${id}`).then((detalle) =>
       dispatch({
         type: GET_SERVICE_ID,
         payload: detalle.data,
@@ -191,7 +190,7 @@ export function getServiceById(id) {
 
 export function deleteService(id) {
   return async function (dispatch) {
-    await axios.delete(`${EP}/services/${id}`).then((detalle) =>
+    await axios.delete(`/services/${id}`).then((detalle) =>
       dispatch({
         type: DELETE_SERVICES,
         payload: detalle.data,
@@ -204,7 +203,7 @@ export function deleteService(id) {
 
 export function deleteCategory(id) {
   return async function (dispatch) {
-    await axios.delete(`${EP}/category/${id}`).then((detalle) =>
+    await axios.delete(`/category/${id}`).then((detalle) =>
       dispatch({
         type: DELETE_CATEGORY,
         payload: detalle.data,
@@ -215,7 +214,7 @@ export function deleteCategory(id) {
 
 export function searchCategory(name) {
   return async function (dispatch) {
-    await axios.get(`${EP}/category/search?name=${name}`).then((detalle) =>
+    await axios.get(`/category/search?name=${name}`).then((detalle) =>
       dispatch({
         type: SEARCH_CATEGORY,
         payload: detalle.data,
@@ -233,7 +232,7 @@ export function filterByCategory(payload) {
 
 export function postCategory(category) {
   return async function (dispatch) {
-    await axios.post(`${EP}/category`, category).then((detalle) =>
+    await axios.post(`/category`, category).then((detalle) =>
       dispatch({
         type: POST_CATEGORY,
         payload: detalle.data,
@@ -245,7 +244,7 @@ export function postCategory(category) {
 //ACTION PARA LAS REQUEST
 export function postRequest(request) {
   return async function (dispatch) {
-    await axios.post(`${EP}/request`, request).then((data) =>
+    await axios.post(`/request`, request).then((data) =>
       dispatch({
         type: POST_REQUEST,
         payload: data.data,
@@ -256,7 +255,7 @@ export function postRequest(request) {
 
 export function updateRequest(state) {
   return async function (dispatch) {
-    await axios.put(`${EP}/request`, state).then((detalle) =>
+    await axios.put(`/request`, state).then((detalle) =>
       dispatch({
         type: UPDATE_REQUEST,
         payload: detalle.data,
@@ -267,7 +266,7 @@ export function updateRequest(state) {
 
 export function deleteRequest(id) {
   return async function (dispatch) {
-    await axios.delete(`${EP}/request/${id}`).then((detalle) =>
+    await axios.delete(`/request/${id}`).then((detalle) =>
       dispatch({
         type: DELETE_REQUEST,
         payload: detalle.data,
@@ -278,7 +277,7 @@ export function deleteRequest(id) {
 
 export function allRequest() {
   return async function (dispatch) {
-    await axios.get(`${EP}/request`).then((detalle) =>
+    await axios.get(`/request`).then((detalle) =>
       dispatch({
         type: ALL_REQUEST,
         payload: detalle.data,
@@ -291,7 +290,7 @@ export function allRequest() {
 
 export function allNotifications() {
   return async function (dispatch) {
-    await axios.get(`${EP}/notifications`).then((detalle) =>
+    await axios.get(`/notifications`).then((detalle) =>
       dispatch({
         type: ALL_NOTIFICATIONS,
         payload: detalle.data,
@@ -302,7 +301,7 @@ export function allNotifications() {
 
 export function postNotification(noti) {
   return async function (dispatch) {
-    await axios.post(`${EP}/notifications`, noti).then((detalle) =>
+    await axios.post(`/notifications`, noti).then((detalle) =>
       dispatch({
         type: POST_NOTIFICATION,
         payload: detalle.data,
@@ -313,7 +312,7 @@ export function postNotification(noti) {
 
 export function deleteNotification(id) {
   return async function (dispatch) {
-    await axios.delete(`${EP}/notifications/${id}`).then((detalle) =>
+    await axios.delete(`/notifications/${id}`).then((detalle) =>
       dispatch({
         type: DELETE_NOTIFICATION,
         payload: detalle.data,
@@ -324,7 +323,7 @@ export function deleteNotification(id) {
 
 export function allUsers() {
   return async function (dispatch) {
-    const dataDb = await axios(`${EP}/user`);
+    const dataDb = await axios(`/user`);
     return dispatch({
       type: ALL_USERS,
       payload: dataDb.data,
@@ -333,7 +332,7 @@ export function allUsers() {
 }
 export function userById(userId) {
   return async function (dispatch) {
-    const dataDb = await axios(`${EP}/users/${userId}`);
+    const dataDb = await axios(`/users/${userId}`);
     return dispatch({
       type: USER_BY_ID,
       payload: dataDb.data,
@@ -357,7 +356,7 @@ export function postReview(data) {
 
 export function getAllReviews() {
   return async function (dispatch) {
-    const dataDb = await axios(`${EP}/reviews`);
+    const dataDb = await axios(`/reviews`);
     return dispatch({
       type: ALL_REVIEWS,
       payload: dataDb.data,
