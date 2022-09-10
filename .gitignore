@@ -107,4 +107,4 @@ dist
 package-lock.json
 
 #Secret
-client/src/Secret/
+.Secret/
