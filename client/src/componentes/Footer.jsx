@@ -59,7 +59,7 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-      <div className={s.seccionFooterLista}>
+      {/* <div className={s.seccionFooterLista}>
         <ul className={s.footerLista}>
           <p>Legal</p>
           <li className={s.footerListaItem}>
@@ -77,7 +77,7 @@ export default function Footer() {
             </NavLink>
           </li>
         </ul>
-      </div>
+      </div> */}
       <div className={s.seccionFooterLista}>
         <ul className={s.footerLista}>
           <p>Desarrollado por</p>
