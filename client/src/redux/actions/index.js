@@ -344,7 +344,7 @@ export function userById(userId) {
 export function postReview(data) {
   return async function (dispatch) {
     await axios
-      .post("http://www.localhost:3001/reviews", data)
+      .post("/reviews", data)
       .then((detalle) =>
         dispatch({
           type: POST_REVIEW,
