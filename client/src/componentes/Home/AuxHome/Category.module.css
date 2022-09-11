@@ -16,6 +16,7 @@
     background-size: cover;
     background-position: center;
     position: relative;
+    margin: 10px 5px;
     box-shadow: 4px 8px 5px 0px rgba(0,0,0,0.62);
 }
 
