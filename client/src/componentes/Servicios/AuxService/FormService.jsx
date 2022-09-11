@@ -340,7 +340,7 @@ export default function FormService() {
                 <TextField
                   id="outlined-basic"
                   label="Precio del servicio"
-                  style={{margin: '5px'}}
+                  style={{marginTop: '5px'}}
                   variant="outlined"
                   className={s.input}
                   type="number"
