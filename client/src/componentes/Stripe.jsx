@@ -54,7 +54,7 @@ const CheckoutForm = ({id}) => {
     if (!error) {
       const email = service[0]?.user.email;
       const { id } = paymentMethod;
-      await axios.post("http://www.localhost:3001/payment", {
+      await axios.post("/payment", {
         id,
         amount: request[0]?.services.price,
         email: email,
