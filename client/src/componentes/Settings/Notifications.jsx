@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteNotification} from "../../redux/actions";
+import { allNotifications, deleteNotification} from "../../redux/actions";
 import { Box, Button, Typography } from "@mui/material";
 import s from './Notificaciones.module.css'
 import error from "../../404.png";
+import { useEffect } from "react";
 
 export default function Notifications() {
   let notifications = useSelector((state) => state.allNotifications);
@@ -13,7 +14,11 @@ export default function Notifications() {
     (e) => e.userNotificated_id === userState[0]?.id
   );
   notifications = notifications.reverse();
-
+  
+  useEffect(() => {
+    dispatch(allNotifications())
+  }, [dispatch])
+  
   //Paginado para los servicios
   const paginas = Math.ceil(notifications.length / 7);
   const [pages, setPages] = useState(1);
@@ -42,9 +47,9 @@ export default function Notifications() {
   const handleOnClick = (e) => {
     e.preventDefault();
     dispatch(deleteNotification(e.target.id));
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 500);
+    // setTimeout(() => {
+    //   window.location.reload(true);
+    // }, 500);
   };
 
   return (
