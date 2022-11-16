@@ -14,7 +14,7 @@ export default function AdminPrivate({ children }) {
     dispatch(getUserEmail(user?.email));
   }, [dispatch, user?.email]);
 
-  if (userState[0]?.admin !== true) {
+  if (userState[0]?.admin === false) {
     return <>{children}</>;
   } else {
     return (
