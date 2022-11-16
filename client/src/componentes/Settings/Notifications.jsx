@@ -47,9 +47,9 @@ export default function Notifications() {
   const handleOnClick = (e) => {
     e.preventDefault();
     dispatch(deleteNotification(e.target.id));
-    // setTimeout(() => {
-    //   window.location.reload(true);
-    // }, 500);
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   };
 
   return (
